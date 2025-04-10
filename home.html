@@ -21,7 +21,7 @@
             <!-- my account total money  -->
             <div class="stats shadow">
               <div class="stat">
-                <div id="main-balance" class="stat-value">0</div>
+                <div id="main-balance" class="stat-value">1000</div>
                 <div class="stat-desc">Available Balance</div>
               </div>
             </div>
@@ -32,8 +32,11 @@
               <button class="btn btn-lg">Cash Out</button>
             </div>
             <div class="divider"></div>
+            <!-- add money start -->
             <!-- form  -->
-            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <div
+              class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
+            >
               <form class="card-body">
                 <div class="form-control">
                   <label class="label">
@@ -66,6 +69,42 @@
                 </div>
               </form>
             </div>
+            <!-- add money end  -->
+            <!-- cash out start  -->
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form class="card-body">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Amount</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Cash Out Amount"
+                    class="input input-bordered"
+                    id="cash-input-money"
+                    required
+                  />
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Pin</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Pin"
+                    class="input input-bordered"
+                    id="cash-input-pin"
+                    required
+                  />
+                </div>
+                <div class="form-control mt-6">
+                  <button id="btn-cash-out" class="btn btn-primary">
+                    Cash Out
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- cash out end  -->
           </div>
         </div>
       </div>
