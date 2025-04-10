@@ -5,7 +5,7 @@ document
     document.getElementById("cash-out-form").classList.remove("hidden");
     document.getElementById("add-money-form").classList.add("hidden");
   });
-//   show add money
+//   show the add money
 document
   .getElementById("btn-show-add-money")
   .addEventListener("click", function () {
