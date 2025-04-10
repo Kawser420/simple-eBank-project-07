@@ -31,7 +31,6 @@ document
     const cashInputMoney = document.getElementById("cash-input-money").value;
     const cashInputMoneyNumber = parseFloat(cashInputMoney);
     const cashInputPin = document.getElementById("cash-input-pin").value;
-    const cashInputPinNumber = parseFloat(cashInputPin);
     if (cashInputPin === "1234") {
       const mainBalance = document.getElementById("main-balance").innerText;
       const mainBalanceNumber = parseFloat(mainBalance);
