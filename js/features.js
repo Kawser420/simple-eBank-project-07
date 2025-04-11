@@ -12,3 +12,4 @@ document
     document.getElementById("cash-out-form").classList.add("hidden");
     document.getElementById("add-money-form").classList.remove("hidden");
   });
+// feature is end
