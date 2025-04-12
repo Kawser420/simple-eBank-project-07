@@ -1,4 +1,4 @@
-// Login Form
+// Login Form Start
 document
   .getElementById("btn-login")
   .addEventListener("click", function (event) {
@@ -14,4 +14,4 @@ document
     }
     console.log(phoneNumber, pinNumber);
   });
-// login form end
+// Login Form End
