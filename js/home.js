@@ -1,4 +1,4 @@
-// add money
+// add money start
 document
   .getElementById("btn-add-money")
   .addEventListener("click", function (event) {
