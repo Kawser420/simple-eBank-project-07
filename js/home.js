@@ -41,3 +41,4 @@ document
       alert("Failed cash out. please try again!");
     }
   });
+// home is complete
