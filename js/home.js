@@ -22,6 +22,7 @@ document
       alert("Failed Pin Number. please try again!");
     }
   });
+// add money end
 
 // cash out
 document
