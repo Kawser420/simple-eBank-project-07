@@ -24,7 +24,7 @@ document
   });
 // add money end
 
-// cash out
+// cash out start
 document
   .getElementById("btn-cash-out")
   .addEventListener("click", function (event) {
