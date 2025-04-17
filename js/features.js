@@ -1,11 +1,11 @@
-// show the cash out
+// show cash out
 document
   .getElementById("btn-show-cash-out")
   .addEventListener("click", function () {
     document.getElementById("cash-out-form").classList.remove("hidden");
     document.getElementById("add-money-form").classList.add("hidden");
   });
-//   show the add money
+//   show add money
 document
   .getElementById("btn-show-add-money")
   .addEventListener("click", function () {

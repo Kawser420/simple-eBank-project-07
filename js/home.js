@@ -42,4 +42,4 @@ document
       alert("Failed cash out. please try again!");
     }
   });
-// home is complete
+// cash out end
