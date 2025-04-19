@@ -3,7 +3,7 @@ document
   .getElementById("btn-login")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    // phone number
+    // add phone number
     const phoneNumber = document.getElementById("phone-number").value;
     const pinNumber = document.getElementById("pin-number").value;
     if (phoneNumber === "017" && pinNumber === "1234") {
