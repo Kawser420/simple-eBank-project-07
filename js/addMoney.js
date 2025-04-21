@@ -7,3 +7,11 @@ document
     const addPinNumber = document.getElementById("input-pin-number").value;
     console.log(addMoney, addPinNumber);
   });
+// wrang way to validation
+if (addPinNumber === "1234") {
+  const balance = document.getElementById("account-balance").innerText;
+  console.log("balance", balance);
+  console.log("pin was just click");
+} else {
+  alert("wrong pin number");
+}
