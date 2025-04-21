@@ -10,6 +10,7 @@ document
 // wrang way to validation
 if (addPinNumber === "1234") {
   const balance = document.getElementById("account-balance").innerText;
+  const newBalance = parseFloat();
   console.log("balance", balance);
   console.log("pin was just click");
 } else {
