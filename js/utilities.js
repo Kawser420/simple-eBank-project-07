@@ -1,5 +1,14 @@
 // utilities
-function getInputFieldValueById() {
-  const addMoney = document.getElementById("input-add-money").value;
-  return addMoney;
+// add money field
+function getInputFieldValueById(id) {
+  console.log("input value");
+  const inputValue = document.getElementById(id).value;
+  const inputNumber = parseFloat(inputValue);
+  return inputNumber;
+}
+// cash out field
+function getTextFieldValueById(id) {
+  const textValue = document.getElementById(id).innerText;
+  const textNumber = parseFloat(textValue);
+  return textNumber;
 }
