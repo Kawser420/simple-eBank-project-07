@@ -24,6 +24,6 @@ document
       // should be a common function
       document.getElementById("transaction-section").appendChild(p);
     } else {
-      alert("Failed pin number!!! please try again!!!!!!!!!!!");
+      alert("Failed pin number!!! please try again and again!!!!!!!!!!");
     }
   });
