@@ -9,7 +9,7 @@ document
 
     // validation add money
     if (isNaN(addMoney)) {
-      alert("failed! try again.....");
+      alert("failed! try again...........");
       return;
     }
     if (pinNumber === 1234) {
