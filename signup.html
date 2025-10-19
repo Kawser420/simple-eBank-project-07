@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="business">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | World-Class E-Bank</title>
+    <meta
+      name="description"
+      content="Create your World-Class E-Bank account. Join millions who trust us with their financial needs."
+    />
+
+    <!-- Tailwind CSS & DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>"
+    />
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+    <!-- Navigation -->
+    <nav class="navbar bg-base-100 shadow-lg">
+      <div class="navbar-start">
+        <a class="btn btn-ghost text-xl font-bold" href="index.html">
+          <span class="text-primary">🏦</span>
+          <span
+            class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            >WorldBank</span
+          >
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <a href="index.html" class="btn btn-ghost btn-sm">Back to Login</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-10">
+      <div class="max-w-4xl mx-auto">
+        <!-- Progress Steps -->
+        <div class="flex justify-center mb-10">
+          <ul class="steps steps-vertical lg:steps-horizontal">
+            <li class="step step-primary">Account Details</li>
+            <li class="step">Verification</li>
+            <li class="step">Security Setup</li>
+            <li class="step">Complete</li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Signup Form -->
+          <div class="card bg-base-100 shadow-xl bank-card animate-slide-in">
+            <div class="card-body">
+              <h2 class="card-title text-2xl font-bold mb-2">
+                Create Your Account
+              </h2>
+              <p class="text-gray-600 mb-6">
+                Join millions who trust WorldBank with their financial needs
+              </p>
+
+              <form id="signup-form">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Full Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="John Doe"
+                    class="input input-bordered focus:input-primary"
+                    id="signup-name"
+                    required
+                    autocomplete="name"
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Email Address</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    class="input input-bordered focus:input-primary"
+                    id="signup-email"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Phone Number</span>
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+1 (555) 123-4567"
+                    class="input input-bordered focus:input-primary"
+                    id="signup-phone"
+                    required
+                    autocomplete="tel"
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="••••••••"
+                    class="input input-bordered focus:input-primary"
+                    id="signup-password"
+                    required
+                    autocomplete="new-password"
+                  />
+                  <label class="label">
+                    <span class="label-text-alt"
+                      >Must be at least 8 characters</span
+                    >
+                  </label>
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Confirm Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="••••••••"
+                    class="input input-bordered focus:input-primary"
+                    id="signup-confirm-password"
+                    required
+                    autocomplete="new-password"
+                  />
+                </div>
+
+                <div class="form-control mt-6">
+                  <label class="label cursor-pointer justify-start">
+                    <input
+                      type="checkbox"
+                      class="checkbox checkbox-primary mr-3"
+                      id="signup-terms"
+                      required
+                    />
+                    <span class="label-text">
+                      I agree to the
+                      <a href="#" class="link link-primary">Terms of Service</a>
+                      and
+                      <a href="#" class="link link-primary">Privacy Policy</a>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="form-control mt-6">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Create Account
+                  </button>
+                </div>
+              </form>
+
+              <div class="divider">OR</div>
+
+              <div class="social-auth-container">
+                <!-- Social buttons will be injected here -->
+              </div>
+
+              <div class="text-center mt-6">
+                <p class="text-sm">
+                  Already have an account?
+                  <a href="index.html" class="link link-primary font-semibold"
+                    >Login here</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Benefits Sidebar -->
+          <div class="space-y-6">
+            <div class="card bg-primary text-primary-content">
+              <div class="card-body">
+                <h3 class="card-title">🎁 Welcome Bonus</h3>
+                <p>
+                  Get $10 free when you open your account and complete your
+                  first transaction!
+                </p>
+              </div>
+            </div>
+
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h3 class="card-title">✨ Premium Features</h3>
+                <ul class="space-y-3 mt-3">
+                  <li class="flex items-start">
+                    <span class="text-success mr-2 mt-1">✓</span>
+                    <span>Zero maintenance fees</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-success mr-2 mt-1">✓</span>
+                    <span>Instant money transfers</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-success mr-2 mt-1">✓</span>
+                    <span>24/7 customer support</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-success mr-2 mt-1">✓</span>
+                    <span>Advanced security features</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-success mr-2 mt-1">✓</span>
+                    <span>Mobile banking app access</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h3 class="card-title">🔒 Security First</h3>
+                <p class="mt-2">
+                  We use bank-level encryption and security protocols to ensure
+                  your data and money are always safe.
+                </p>
+                <div class="flex items-center mt-4">
+                  <div
+                    class="w-10 h-10 bg-success/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <span class="text-success text-xl">✓</span>
+                  </div>
+                  <div>
+                    <p class="font-semibold">Verified & Secure</p>
+                    <p class="text-sm text-gray-600">
+                      FDIC insured up to $250,000
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="footer footer-center p-10 bg-base-300 text-base-content mt-20"
+    >
+      <aside>
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-3xl mr-2">🏦</span>
+          <h3
+            class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          >
+            WorldBank
+          </h3>
+        </div>
+        <p class="font-bold">
+          World-Class Digital Banking<br />Trusted by millions worldwide
+        </p>
+        <p>Copyright © 2024 - All rights reserved</p>
+      </aside>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/utilities.js"></script>
+    <script src="js/social-auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>

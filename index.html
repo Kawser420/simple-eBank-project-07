@@ -1,77 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="business">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ePayoo Bank!</title>
-    <!-- Tailwind CSS daisyUI  -->
+    <title>SecureLogin | World-Class E-Bank</title>
+    <meta
+      name="description"
+      content="Secure login to your World-Class E-Bank account. Experience banking redefined."
+    />
+
+    <!-- Tailwind CSS & DaisyUI -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
       rel="stylesheet"
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>"
+    />
   </head>
-  <body>
-    <!-- main start  -->
-    <main class="flex justify-center">
-      <div class="mockup-phone">
-        <div class="camera"></div>
-        <div class="display">
-          <div class="artboard artboard-demo phone-2">
-            <!-- Login Form Start  -->
-            <div class="hero bg-base-200 min-h-screen">
-              <div class="hero-content flex-col lg:flex-row-reverse">
-                <div
-                  class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
-                >
-                  <form class="card-body">
-                    <div class="form-control">
-                      <label class="label">
-                        <span class="label-text">Phone Number</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your Phone Number"
-                        class="input input-bordered"
-                        id="phone-number"
-                        required
-                        autocomplete="off"
-                      />
-                    </div>
-                    <div class="form-control">
-                      <label class="label">
-                        <span class="label-text">Pin</span>
-                      </label>
-                      <input
-                        type="password"
-                        placeholder="Your Pin"
-                        class="input input-bordered"
-                        id="pin-number"
-                        required
-                      />
-                      <label class="label">
-                        <a href="#" class="label-text-alt link link-hover"
-                          >Forgot password?</a
-                        >
-                      </label>
-                    </div>
-                    <div class="form-control mt-6">
-                      <button id="btn-login" class="btn btn-primary">
-                        Login
-                      </button>
-                    </div>
-                  </form>
+  <body class="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+    <!-- Navigation -->
+    <nav class="navbar bg-base-100 shadow-lg sticky top-0 z-40">
+      <div class="navbar-start">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            <li><a href="#features">Features</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl font-bold" href="index.html">
+          <span class="text-primary">🏦</span>
+          <span
+            class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            >WorldBank</span
+          >
+        </a>
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar-end">
+        <a href="signup.html" class="btn btn-outline btn-sm mr-2">Sign Up</a>
+        <button
+          class="btn btn-primary btn-sm"
+          onclick="window.location.href='#login'"
+        >
+          Login
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="hero min-h-screen bg-gradient-to-br from-primary to-secondary text-primary-content"
+    >
+      <div
+        class="hero-content flex-col lg:flex-row-reverse text-center lg:text-left"
+      >
+        <div class="lg:w-1/2 flex justify-center">
+          <div class="w-full max-w-md">
+            <div
+              class="card bg-base-100 shadow-2xl text-base-content animate-slide-in"
+            >
+              <div class="card-body">
+                <h2 class="card-title justify-center text-2xl font-bold mb-6">
+                  Welcome Back
+                </h2>
+
+                <form id="login-form">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      class="input input-bordered focus:input-primary"
+                      id="login-email"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+
+                  <div class="form-control mt-4">
+                    <label class="label">
+                      <span class="label-text">Password</span>
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="••••••••"
+                      class="input input-bordered focus:input-primary"
+                      id="login-password"
+                      required
+                      autocomplete="current-password"
+                    />
+                    <label class="label">
+                      <a href="#" class="label-text-alt link link-hover"
+                        >Forgot password?</a
+                      >
+                    </label>
+                  </div>
+
+                  <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary">
+                      Login to Your Account
+                    </button>
+                  </div>
+                </form>
+
+                <div class="divider">OR</div>
+
+                <div class="social-auth-container">
+                  <!-- Social buttons will be injected here -->
+                </div>
+
+                <div class="text-center mt-6">
+                  <p class="text-sm">
+                    Don't have an account?
+                    <a
+                      href="signup.html"
+                      class="link link-primary font-semibold"
+                      >Sign up here</a
+                    >
+                  </p>
                 </div>
               </div>
             </div>
-            <!-- Login Form End  -->
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 mt-10 lg:mt-0 lg:pr-10">
+          <h1 class="text-5xl font-bold">
+            Banking <span class="text-accent">Reimagined</span>
+          </h1>
+          <p class="py-6 text-xl opacity-90">
+            Experience world-class digital banking with cutting-edge security,
+            seamless transactions, and personalized financial insights.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="badge badge-lg badge-outline p-4">
+              🔒 Bank-Grade Security
+            </div>
+            <div class="badge badge-lg badge-outline p-4">
+              ⚡ Instant Transfers
+            </div>
+            <div class="badge badge-lg badge-outline p-4">
+              🌍 24/7 Global Access
+            </div>
+          </div>
+          <button
+            class="btn btn-accent btn-lg"
+            onclick="window.location.href='signup.html'"
+          >
+            Get Started Free
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-base-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          Why Choose WorldBank?
+        </h2>
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+          We're revolutionizing digital banking with features designed for the
+          modern world.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="card bank-card bg-base-100 shadow-xl">
+            <figure class="px-10 pt-10">
+              <div
+                class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"
+              >
+                <span class="text-3xl">🚀</span>
+              </div>
+            </figure>
+            <div class="card-body items-center text-center">
+              <h3 class="card-title">Lightning Fast</h3>
+              <p>
+                Process transactions in seconds, not days. Our optimized
+                infrastructure ensures speedy operations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="card bank-card bg-base-100 shadow-xl">
+            <figure class="px-10 pt-10">
+              <div
+                class="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center"
+              >
+                <span class="text-3xl">🔐</span>
+              </div>
+            </figure>
+            <div class="card-body items-center text-center">
+              <h3 class="card-title">Military-Grade Security</h3>
+              <p>
+                Your data is protected with bank-level encryption and
+                multi-factor authentication.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="card bank-card bg-base-100 shadow-xl">
+            <figure class="px-10 pt-10">
+              <div
+                class="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center"
+              >
+                <span class="text-3xl">💎</span>
+              </div>
+            </figure>
+            <div class="card-body items-center text-center">
+              <h3 class="card-title">Premium Experience</h3>
+              <p>
+                Enjoy a sleek, intuitive interface designed for seamless banking
+                across all devices.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </main>
-    <!-- main end  -->
-    <!-- javascript  -->
-    <script src="js/login.js"></script>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="py-20 bg-base-200">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-10 lg:mb-0">
+            <h2 class="text-4xl font-bold mb-6">
+              Your Security is Our <span class="text-primary">Priority</span>
+            </h2>
+            <p class="text-lg mb-6">
+              We employ the highest standards of security to protect your
+              financial data and transactions.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <span class="text-success mr-2 mt-1">✓</span>
+                <span>256-bit SSL encryption for all data transfers</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-success mr-2 mt-1">✓</span>
+                <span>Multi-factor authentication options</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-success mr-2 mt-1">✓</span>
+                <span>Real-time fraud monitoring and alerts</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-success mr-2 mt-1">✓</span>
+                <span>Biometric login support</span>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-1/2 flex justify-center">
+            <div
+              class="security-shield w-64 h-64 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
+            >
+              <span class="text-6xl text-white">🛡️</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+      <aside>
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-3xl mr-2">🏦</span>
+          <h3
+            class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          >
+            WorldBank
+          </h3>
+        </div>
+        <p class="font-bold">
+          World-Class Digital Banking<br />Trusted by millions worldwide
+        </p>
+        <p>Copyright © 2024 - All rights reserved</p>
+      </aside>
+      <nav>
+        <div class="grid grid-flow-col gap-4">
+          <a
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+              ></path></svg
+          ></a>
+          <a
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+              ></path></svg
+          ></a>
+          <a
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+              ></path></svg
+          ></a>
+        </div>
+      </nav>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/utilities.js"></script>
+    <script src="js/social-auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
   </body>
 </html>

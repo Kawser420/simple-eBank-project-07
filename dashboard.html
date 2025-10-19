@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="business">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | World-Class E-Bank</title>
+    <meta
+      name="description"
+      content="Manage your finances with WorldBank's advanced dashboard. Track transactions, transfer money, and more."
+    />
+
+    <!-- Tailwind CSS & DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>"
+    />
+  </head>
+  <body class="min-h-screen bg-base-200">
+    <!-- Navigation -->
+    <nav class="navbar bg-base-100 shadow-lg sticky top-0 z-40">
+      <div class="navbar-start">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a class="nav-btn" data-target="dashboard-section">Dashboard</a>
+            </li>
+            <li>
+              <a class="nav-btn" data-target="transactions-section"
+                >Transactions</a
+              >
+            </li>
+            <li>
+              <a class="nav-btn" data-target="transfer-section">Transfer</a>
+            </li>
+            <li>
+              <a class="nav-btn" data-target="settings-section">Settings</a>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl font-bold" href="dashboard.html">
+          <span class="text-primary">🏦</span>
+          <span
+            class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            >WorldBank</span
+          >
+        </a>
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li>
+            <a class="nav-btn btn-ghost" data-target="dashboard-section"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a class="nav-btn btn-ghost" data-target="transactions-section"
+              >Transactions</a
+            >
+          </li>
+          <li>
+            <a class="nav-btn btn-ghost" data-target="transfer-section"
+              >Transfer</a
+            >
+          </li>
+          <li>
+            <a class="nav-btn btn-ghost" data-target="settings-section"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-end">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+              <span class="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+          </div>
+          <div
+            tabindex="0"
+            class="card card-compact dropdown-content bg-base-100 z-50 mt-3 w-72 shadow"
+          >
+            <div class="card-body">
+              <span class="font-bold text-lg">2 Notifications</span>
+              <div class="mt-2 space-y-2">
+                <div class="alert alert-info">
+                  <span>New security feature available</span>
+                </div>
+                <div class="alert alert-success">
+                  <span>Your deposit was successful</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown-end">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle avatar"
+          >
+            <div class="w-10 rounded-full">
+              <img id="user-avatar" alt="User Avatar" />
+            </div>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a id="logout-btn">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+      <!-- Quick Actions -->
+      <div class="flex flex-wrap gap-4 mb-6 justify-center">
+        <button class="btn btn-primary quick-action" data-action="add-money">
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            ></path>
+          </svg>
+          Add Money
+        </button>
+        <button class="btn btn-outline quick-action" data-action="cash-out">
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+            ></path>
+          </svg>
+          Cash Out
+        </button>
+        <button class="btn btn-outline quick-action" data-action="transfer">
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+            ></path>
+          </svg>
+          Transfer
+        </button>
+        <button class="btn btn-outline quick-action" data-action="transactions">
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            ></path>
+          </svg>
+          Transactions
+        </button>
+      </div>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard-section" class="section">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Balance Card -->
+          <div class="lg:col-span-2">
+            <div
+              class="card bank-card bg-gradient-to-br from-primary to-secondary text-primary-content shadow-xl"
+            >
+              <div class="card-body">
+                <h2 class="card-title">Your Balance</h2>
+                <p
+                  class="text-4xl font-bold balance-display"
+                  id="account-balance"
+                >
+                  $1,000.00
+                </p>
+                <div class="card-actions justify-between items-center mt-4">
+                  <div>
+                    <p class="text-sm opacity-80">Account: •••• 4832</p>
+                    <p class="text-sm opacity-80" id="user-name">Loading...</p>
+                  </div>
+                  <div class="badge badge-lg badge-outline">Active</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="space-y-4">
+            <div class="stats stats-vertical shadow bg-base-100">
+              <div class="stat">
+                <div class="stat-title">Total Deposits</div>
+                <div class="stat-value text-success" id="total-deposits">
+                  $0.00
+                </div>
+                <div class="stat-desc">All time</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Total Withdrawals</div>
+                <div class="stat-value text-error" id="total-withdrawals">
+                  $0.00
+                </div>
+                <div class="stat-desc">All time</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Total Transfers</div>
+                <div class="stat-value text-info" id="total-transfers">
+                  $0.00
+                </div>
+                <div class="stat-desc">All time</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="mt-8">
+          <div class="card bg-base-100 shadow">
+            <div class="card-body">
+              <div class="flex justify-between items-center mb-6">
+                <h2 class="card-title">Recent Transactions</h2>
+                <a class="btn btn-ghost btn-sm">View All</a>
+              </div>
+              <div id="recent-transactions" class="space-y-4">
+                <!-- Transactions will be loaded here -->
+                <div class="text-center py-8">
+                  <div class="text-4xl mb-4">📊</div>
+                  <p class="text-gray-500">No transactions yet</p>
+                  <p class="text-sm text-gray-400">
+                    Your transactions will appear here
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transactions Section -->
+      <section id="transactions-section" class="section hidden">
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h2 class="card-title mb-6">Transaction History</h2>
+            <div class="overflow-x-auto">
+              <table class="table table-zebra">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="transactions-table">
+                  <!-- Transactions will be loaded here -->
+                  <tr>
+                    <td colspan="4" class="text-center py-8">
+                      <div class="text-4xl mb-4">📊</div>
+                      <p class="text-gray-500">No transactions yet</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transfer Section -->
+      <section id="transfer-section" class="section hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="card bg-base-100 shadow">
+            <div class="card-body">
+              <h2 class="card-title">Quick Transfer</h2>
+              <form id="transfer-form">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Recipient</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Email, phone, or account number"
+                    class="input input-bordered"
+                    id="transfer-recipient"
+                    required
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Amount</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="0.00"
+                    class="input input-bordered"
+                    id="transfer-amount"
+                    required
+                    min="1"
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Description</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Optional note"
+                    class="input input-bordered"
+                    id="transfer-description"
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Security PIN</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="••••"
+                    class="input input-bordered"
+                    id="transfer-pin"
+                    required
+                    maxlength="4"
+                  />
+                </div>
+
+                <div class="form-control mt-6">
+                  <button type="submit" class="btn btn-primary">
+                    Send Money
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h3 class="card-title">💡 Transfer Tips</h3>
+                <ul class="space-y-2 mt-3">
+                  <li class="flex items-start">
+                    <span class="text-info mr-2 mt-1">•</span>
+                    <span>Double-check recipient details before sending</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-info mr-2 mt-1">•</span>
+                    <span>Transfers are usually instant</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-info mr-2 mt-1">•</span>
+                    <span>Keep your security PIN confidential</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h3 class="card-title">📞 Need Help?</h3>
+                <p class="mt-2">
+                  Our support team is available 24/7 to assist with any transfer
+                  issues.
+                </p>
+                <button class="btn btn-outline btn-sm mt-4">
+                  Contact Support
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings-section" class="section hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2">
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h2 class="card-title">Account Settings</h2>
+
+                <div class="divider"></div>
+
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Full Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="input input-bordered"
+                    value="Loading..."
+                    disabled
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Email Address</span>
+                  </label>
+                  <input
+                    type="email"
+                    class="input input-bordered"
+                    value="Loading..."
+                    disabled
+                  />
+                </div>
+
+                <div class="form-control mt-4">
+                  <label class="label">
+                    <span class="label-text">Phone Number</span>
+                  </label>
+                  <input
+                    type="tel"
+                    class="input input-bordered"
+                    value="Loading..."
+                    disabled
+                  />
+                </div>
+
+                <div class="form-control mt-6">
+                  <button class="btn btn-outline">Update Profile</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="card bg-base-100 shadow" id="theme-section">
+              <!-- Theme selector will be injected here -->
+            </div>
+
+            <div class="card bg-base-100 shadow">
+              <div class="card-body">
+                <h3 class="card-title">Security Settings</h3>
+                <div class="space-y-4 mt-4">
+                  <div class="flex justify-between items-center">
+                    <span>Two-Factor Authentication</span>
+                    <input
+                      type="checkbox"
+                      class="toggle toggle-primary"
+                      checked
+                    />
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span>Login Notifications</span>
+                    <input
+                      type="checkbox"
+                      class="toggle toggle-primary"
+                      checked
+                    />
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span>Biometric Login</span>
+                    <input type="checkbox" class="toggle toggle-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Add Money Modal -->
+    <dialog id="add-money-modal" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Add Money to Your Account</h3>
+        <form id="add-money-form" class="mt-4">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount</span>
+            </label>
+            <input
+              type="number"
+              placeholder="0.00"
+              class="input input-bordered"
+              id="add-money-amount"
+              required
+              min="1"
+            />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Payment Method</span>
+            </label>
+            <select
+              class="select select-bordered"
+              id="add-money-method"
+              required
+            >
+              <option value="" disabled selected>Select method</option>
+              <option value="card">Credit/Debit Card</option>
+              <option value="bank">Bank Transfer</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Security PIN</span>
+            </label>
+            <input
+              type="password"
+              placeholder="••••"
+              class="input input-bordered"
+              id="add-money-pin"
+              required
+              maxlength="4"
+            />
+          </div>
+
+          <div class="modal-action">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              onclick="document.getElementById('add-money-modal').close()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Add Money</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Cash Out Modal -->
+    <dialog id="cash-out-modal" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Cash Out</h3>
+        <form id="cash-out-form" class="mt-4">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Amount</span>
+            </label>
+            <input
+              type="number"
+              placeholder="0.00"
+              class="input input-bordered"
+              id="cash-out-amount"
+              required
+              min="1"
+            />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Withdrawal Method</span>
+            </label>
+            <select
+              class="select select-bordered"
+              id="cash-out-method"
+              required
+            >
+              <option value="" disabled selected>Select method</option>
+              <option value="bank">Bank Account</option>
+              <option value="card">Card</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Security PIN</span>
+            </label>
+            <input
+              type="password"
+              placeholder="••••"
+              class="input input-bordered"
+              id="cash-out-pin"
+              required
+              maxlength="4"
+            />
+          </div>
+
+          <div class="modal-action">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              onclick="document.getElementById('cash-out-modal').close()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Withdraw</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Transfer Modal -->
+    <dialog id="transfer-modal" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Transfer Money</h3>
+        <form id="transfer-form-modal" class="mt-4">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Recipient</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Email, phone, or account number"
+              class="input input-bordered"
+              id="transfer-recipient-modal"
+              required
+            />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Amount</span>
+            </label>
+            <input
+              type="number"
+              placeholder="0.00"
+              class="input input-bordered"
+              id="transfer-amount-modal"
+              required
+              min="1"
+            />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Description</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Optional note"
+              class="input input-bordered"
+              id="transfer-description-modal"
+            />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label">
+              <span class="label-text">Security PIN</span>
+            </label>
+            <input
+              type="password"
+              placeholder="••••"
+              class="input input-bordered"
+              id="transfer-pin-modal"
+              required
+              maxlength="4"
+            />
+          </div>
+
+          <div class="modal-action">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              onclick="document.getElementById('transfer-modal').close()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Send Money</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer
+      class="footer footer-center p-10 bg-base-300 text-base-content mt-10"
+    >
+      <aside>
+        <div class="flex items-center justify-center mb-4">
+          <span class="text-3xl mr-2">🏦</span>
+          <h3
+            class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          >
+            WorldBank
+          </h3>
+        </div>
+        <p class="font-bold">
+          World-Class Digital Banking<br />Trusted by millions worldwide
+        </p>
+        <p>Copyright © 2024 - All rights reserved</p>
+      </aside>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/utilities.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+/* Custom CSS for Enhanced E-Bank */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Custom animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-bg-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Card hover effects */
+.bank-card {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.bank-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Loading states */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Pulse animation for notifications */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Security shield animation */
+@keyframes shield-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.security-shield {
+  animation: shield-pulse 3s ease-in-out infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .mobile-stack {
+    flex-direction: column;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bank-card {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom component styles */
+.transaction-item {
+  transition: all 0.2s ease;
+}
+
+.transaction-item:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+  transform: translateX(5px);
+}
+
+.balance-display {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Dark mode optimizations */
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

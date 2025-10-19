@@ -1,1 +1,60 @@
-// this is tailwind config javascript file
+module.exports = {
+  content: ["./*.html", "./js/**/*.js"],
+  theme: {
+    extend: {
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        "pulse-slow": "pulse 3s ease-in-out infinite",
+        "bounce-slow": "bounce 2s ease-in-out infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
+      colors: {
+        "bank-primary": "#1e40af",
+        "bank-secondary": "#3b82f6",
+        "bank-accent": "#10b981",
+      },
+      fontFamily: {
+        bank: ["Inter", "system-ui", "sans-serif"],
+      },
+    },
+  },
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      "light",
+      "dark",
+      "cupcake",
+      "bumblebee",
+      "emerald",
+      "corporate",
+      "synthwave",
+      "retro",
+      "cyberpunk",
+      "valentine",
+      "halloween",
+      "garden",
+      "forest",
+      "aqua",
+      "lofi",
+      "pastel",
+      "fantasy",
+      "wireframe",
+      "black",
+      "luxury",
+      "dracula",
+      "cmyk",
+      "autumn",
+      "business",
+      "acid",
+      "lemonade",
+      "night",
+      "coffee",
+      "winter",
+    ],
+  },
+};
