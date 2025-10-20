@@ -84,7 +84,7 @@ body {
   background: #a8a8a8;
 }
 
-/* Pulse animation for notifications */
+/* Pulse animation for notifications  */
 @keyframes pulse-glow {
   0%,
   100% {
