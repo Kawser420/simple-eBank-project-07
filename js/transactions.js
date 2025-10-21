@@ -1,4 +1,3 @@
-// Enhanced Transactions Management
 class TransactionsManager {
   constructor() {
     this.currentUser = null;
@@ -590,12 +589,10 @@ class TransactionsManager {
       const isGridView = !container.classList.contains("hidden");
 
       if (isGridView) {
-        // Switch to table view
         container.classList.add("hidden");
         tableView.classList.remove("hidden");
         viewToggle.innerHTML = '<span class="mr-2">🔄</span> Grid View';
       } else {
-        // Switch to grid view
         container.classList.remove("hidden");
         tableView.classList.add("hidden");
         viewToggle.innerHTML = '<span class="mr-2">📋</span> Table View';
@@ -632,8 +629,6 @@ class TransactionsManager {
     }
   }
 }
-
-// Initialize transactions manager when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   window.transactionsManager = new TransactionsManager();
 });

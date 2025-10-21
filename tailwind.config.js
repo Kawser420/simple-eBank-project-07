@@ -1,4 +1,3 @@
-// Check if daisyui is available, otherwise provide fallback
 let daisyuiPlugin;
 try {
   daisyuiPlugin = require("daisyui");
@@ -205,7 +204,6 @@ module.exports = {
     },
   },
   plugins: [
-    // Only add daisyui if it's available
     ...(daisyuiPlugin ? [daisyuiPlugin] : []),
     function ({ addUtilities }) {
       addUtilities({
@@ -222,7 +220,6 @@ module.exports = {
       });
     },
   ],
-  // Only include daisyui config if daisyui is available
   ...(daisyuiPlugin && {
     daisyui: {
       themes: [

@@ -1,4 +1,3 @@
-// Enhanced utility functions with improved error handling
 class BankUtilities {
   // Get input field value
   static getInputValue(id) {
@@ -6,14 +5,12 @@ class BankUtilities {
     return element ? element.value.trim() : "";
   }
 
-  // Get numeric input value
   static getNumericInputValue(id) {
     const value = this.getInputValue(id);
     const number = parseFloat(value);
     return isNaN(number) ? 0 : number;
   }
 
-  // Format currency
   static formatCurrency(amount) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -23,7 +20,6 @@ class BankUtilities {
 
   // Show notification
   static showNotification(message, type = "info") {
-    // Remove any existing notifications
     const existingNotifications = document.querySelectorAll(
       ".custom-notification"
     );
@@ -40,7 +36,6 @@ class BankUtilities {
 
     document.body.appendChild(notification);
 
-    // Animate in
     setTimeout(() => {
       notification.classList.remove("translate-x-full");
       notification.classList.add("translate-x-0");
@@ -72,14 +67,14 @@ class BankUtilities {
     return re.test(phone);
   }
 
-  // Generate random transaction ID
+  // Random transaction ID
   static generateTransactionId() {
     return (
       "TXN" + Date.now() + Math.random().toString(36).substr(2, 9).toUpperCase()
     );
   }
 
-  // Validate password strength
+  // Validate password
   static validatePassword(password) {
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(password);
@@ -116,9 +111,8 @@ class BankUtilities {
     return new Date(dateString).toLocaleDateString("en-US", options);
   }
 
-  // Download data as PDF (simulated)
+  // Download data as PDF
   static downloadAsPDF(data, filename) {
-    // In a real application, this would generate an actual PDF
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
@@ -151,7 +145,7 @@ class BankUtilities {
   }
 }
 
-// Enhanced Local Storage Management
+// Local Storage Management
 class StorageManager {
   static setItem(key, value) {
     try {
@@ -195,7 +189,7 @@ class StorageManager {
   }
 }
 
-// Enhanced User Session Management
+// User Session Management
 class UserSession {
   static login(userData) {
     StorageManager.setItem("currentUser", userData);
@@ -255,7 +249,6 @@ class UserSession {
 
       StorageManager.setItem("currentUser", user);
 
-      // Also update in bankUsers array
       const users = StorageManager.getItem("bankUsers") || [];
       const userIndex = users.findIndex((u) => u.id === user.id);
       if (userIndex !== -1) {
@@ -282,7 +275,6 @@ class UserSession {
       Object.assign(user, profileData);
       StorageManager.setItem("currentUser", user);
 
-      // Also update in bankUsers array
       const users = StorageManager.getItem("bankUsers") || [];
       const userIndex = users.findIndex((u) => u.id === user.id);
       if (userIndex !== -1) {

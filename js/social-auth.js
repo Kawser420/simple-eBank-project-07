@@ -1,4 +1,3 @@
-// Enhanced Social Authentication Simulation
 class SocialAuthManager {
   constructor() {
     this.providers = {
@@ -66,7 +65,7 @@ class SocialAuthManager {
     });
   }
 
-  // Enhanced social login simulation
+  // social login
   async handleSocialLogin(e) {
     const provider = e.currentTarget.dataset.provider;
     const providerInfo = this.providers[provider];
@@ -82,24 +81,19 @@ class SocialAuthManager {
     e.currentTarget.disabled = true;
 
     try {
-      // Simulate social login process
       await this.simulateSocialLogin(provider);
 
-      // Create mock user data based on provider
       const socialUser = this.generateSocialUser(provider, providerInfo);
 
-      // Check if user already exists
       const users = StorageManager.getItem("bankUsers") || [];
       let existingUser = users.find((u) => u.email === socialUser.email);
 
       if (existingUser) {
-        // Update last login for existing user
         existingUser.lastLogin = new Date().toISOString();
         StorageManager.setItem("bankUsers", users);
         socialUser.balance = existingUser.balance;
         socialUser.transactions = existingUser.transactions;
       } else {
-        // Create new user for first-time social login
         users.push(socialUser);
         StorageManager.setItem("bankUsers", users);
       }
@@ -126,9 +120,7 @@ class SocialAuthManager {
 
   async simulateSocialLogin(provider) {
     return new Promise((resolve, reject) => {
-      // Simulate network delay
       setTimeout(() => {
-        // Simulate random failures (10% chance)
         if (Math.random() < 0.1) {
           reject(new Error(`${provider} authentication failed`));
         } else {
@@ -199,14 +191,11 @@ class SocialAuthManager {
     return transactions;
   }
 
-  // Method to handle social login callbacks (for real OAuth implementation)
   handleSocialCallback(provider, data) {
     console.log(`Social login callback for ${provider}:`, data);
-    // In a real application, this would process the OAuth callback data
   }
 }
 
-// Initialize social auth
 document.addEventListener("DOMContentLoaded", () => {
   new SocialAuthManager();
 });

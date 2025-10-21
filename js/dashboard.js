@@ -1,4 +1,3 @@
-// Enhanced Dashboard Management
 class DashboardManager {
   constructor() {
     this.currentUser = null;
@@ -31,7 +30,6 @@ class DashboardManager {
   loadUserData() {
     if (!this.currentUser) return;
 
-    // Update user info in UI
     const updateElement = (id, value) => {
       const element = document.getElementById(id);
       if (element) element.textContent = value;
@@ -392,7 +390,6 @@ class DashboardManager {
     submitBtn.disabled = true;
 
     try {
-      // Simulate processing
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Update balance
@@ -496,7 +493,6 @@ class DashboardManager {
     submitBtn.disabled = true;
 
     try {
-      // Simulate processing
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // Update balance
@@ -548,7 +544,6 @@ class DashboardManager {
   handleNavigation(e) {
     const target = e.currentTarget.dataset.target;
 
-    // Update nav buttons
     document.querySelectorAll(".nav-btn").forEach((btn) => {
       btn.classList.remove("btn-primary");
       btn.classList.add("btn-ghost");
@@ -557,7 +552,6 @@ class DashboardManager {
     e.currentTarget.classList.remove("btn-ghost");
     e.currentTarget.classList.add("btn-primary");
 
-    // Show target section, hide others
     document.querySelectorAll(".section").forEach((section) => {
       section.classList.add("hidden");
     });
@@ -566,9 +560,8 @@ class DashboardManager {
     if (targetSection) {
       targetSection.classList.remove("hidden");
 
-      // Special handling for transactions section
       if (target === "transactions-section") {
-        this.loadRecentTransactions(); // Reload to ensure table is updated
+        this.loadRecentTransactions();
       }
     }
   }
@@ -784,7 +777,6 @@ class DashboardManager {
   }
 }
 
-// Initialize dashboard when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   new DashboardManager();
 });

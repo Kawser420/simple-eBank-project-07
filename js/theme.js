@@ -1,4 +1,3 @@
-// Advanced Theme Management
 class ThemeManager {
   constructor() {
     this.themes = [
@@ -59,7 +58,6 @@ class ThemeManager {
       document.documentElement.setAttribute("data-theme", themeName);
       StorageManager.setItem("bankTheme", themeName);
 
-      // Update theme selector if it exists
       const themeSelector = document.getElementById("theme-selector");
       if (themeSelector) {
         themeSelector.value = themeName;
@@ -100,7 +98,6 @@ class ThemeManager {
     const existingSelector = document.getElementById("theme-selector");
     if (existingSelector) return;
 
-    // Create theme selector for dashboard
     if (document.getElementById("theme-section")) {
       const themeSection = document.getElementById("theme-section");
       themeSection.innerHTML = `
@@ -176,7 +173,6 @@ class ThemeManager {
   }
 
   attachEventListeners() {
-    // Theme toggle for desktop (if exists)
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
@@ -193,8 +189,6 @@ class ThemeManager {
   getCurrentTheme() {
     return StorageManager.getItem("bankTheme") || "business";
   }
-
-  // Check if current theme is dark
   isDarkTheme(theme = null) {
     const currentTheme = theme || this.getCurrentTheme();
     const darkThemes = [
@@ -213,7 +207,7 @@ class ThemeManager {
   }
 }
 
-// Initialize theme manager
+// Theme manager
 document.addEventListener("DOMContentLoaded", () => {
   window.themeManager = new ThemeManager();
 });

@@ -1,4 +1,4 @@
-// Enhanced Authentication System
+// Authentication System
 class AuthManager {
   constructor() {
     this.init();
@@ -160,10 +160,8 @@ class AuthManager {
     submitBtn.disabled = true;
 
     try {
-      // Simulate API call with better error handling
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // Check credentials
           const users = StorageManager.getItem("bankUsers") || [];
           const user = users.find(
             (u) => u.email === email && u.password === password
@@ -221,7 +219,6 @@ class AuthManager {
     );
     const terms = document.getElementById("signup-terms")?.checked;
 
-    // Enhanced validation
     if (name.length < 2) {
       BankUtilities.showNotification("Please enter your full name", "error");
       return;
@@ -276,7 +273,6 @@ class AuthManager {
       // Simulate API call
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // Check if user already exists
           const users = StorageManager.getItem("bankUsers") || [];
           if (users.find((u) => u.email === email)) {
             reject(new Error("An account with this email already exists"));
@@ -289,7 +285,7 @@ class AuthManager {
             name,
             email,
             phone,
-            password, // In real app, this would be hashed
+            password,
             balance: 1000,
             transactions: [],
             createdAt: new Date().toISOString(),
@@ -309,7 +305,6 @@ class AuthManager {
         }, 2000);
       })
         .then((newUser) => {
-          // Auto login
           UserSession.login({
             id: newUser.id,
             name: newUser.name,
@@ -362,10 +357,7 @@ class AuthManager {
     e.currentTarget.disabled = true;
 
     try {
-      // Simulate social login
       await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Create mock user for social login
       const socialUser = {
         id: `social_${provider}_${Date.now()}`,
         name: `${providerInfo.name} User`,
@@ -416,7 +408,6 @@ class AuthManager {
   }
 }
 
-// Initialize auth manager when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   new AuthManager();
 });
