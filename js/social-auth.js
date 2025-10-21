@@ -1,31 +1,36 @@
-// Social Authentication Simulation
+// Enhanced Social Authentication Simulation
 class SocialAuthManager {
   constructor() {
     this.providers = {
       google: {
         name: "Google",
-        color: "bg-red-500 hover:bg-red-600",
+        color: "bg-red-500 hover:bg-red-600 border-red-500",
         icon: "🔍",
+        textColor: "text-white",
       },
       facebook: {
         name: "Facebook",
-        color: "bg-blue-600 hover:bg-blue-700",
+        color: "bg-blue-600 hover:bg-blue-700 border-blue-600",
         icon: "👤",
+        textColor: "text-white",
       },
       github: {
         name: "GitHub",
-        color: "bg-gray-800 hover:bg-gray-900",
+        color: "bg-gray-800 hover:bg-gray-900 border-gray-800",
         icon: "💻",
+        textColor: "text-white",
       },
       twitter: {
         name: "Twitter",
-        color: "bg-sky-500 hover:bg-sky-600",
+        color: "bg-sky-500 hover:bg-sky-600 border-sky-500",
         icon: "🐦",
+        textColor: "text-white",
       },
       linkedin: {
         name: "LinkedIn",
-        color: "bg-blue-700 hover:bg-blue-800",
+        color: "bg-blue-700 hover:bg-blue-800 border-blue-700",
         icon: "💼",
+        textColor: "text-white",
       },
     };
     this.init();
@@ -33,6 +38,7 @@ class SocialAuthManager {
 
   init() {
     this.createSocialButtons();
+    this.attachSocialEventListeners();
   }
 
   createSocialButtons() {
@@ -43,7 +49,7 @@ class SocialAuthManager {
         container.innerHTML = Object.entries(this.providers)
           .map(
             ([key, provider]) => `
-          <button class="btn btn-outline w-full social-login-btn mb-3 transition-all duration-300 transform hover:scale-105" data-provider="${key}">
+          <button class="btn w-full social-login-btn mb-3 transition-all duration-300 transform hover:scale-105 ${provider.color} ${provider.textColor} border-2" data-provider="${key}">
             <span class="text-xl mr-2">${provider.icon}</span>
             Continue with ${provider.name}
           </button>
@@ -54,23 +60,149 @@ class SocialAuthManager {
     });
   }
 
-  // Simulate social login (in real app, this would use OAuth)
-  async simulateSocialLogin(provider) {
-    return new Promise((resolve) => {
+  attachSocialEventListeners() {
+    document.querySelectorAll(".social-login-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => this.handleSocialLogin(e));
+    });
+  }
+
+  // Enhanced social login simulation
+  async handleSocialLogin(e) {
+    const provider = e.currentTarget.dataset.provider;
+    const providerInfo = this.providers[provider];
+
+    if (!providerInfo) {
+      BankUtilities.showNotification("Unsupported login provider", "error");
+      return;
+    }
+
+    // Show loading
+    const originalHTML = e.currentTarget.innerHTML;
+    e.currentTarget.innerHTML = `<span class="loading loading-spinner"></span> Connecting to ${providerInfo.name}...`;
+    e.currentTarget.disabled = true;
+
+    try {
+      // Simulate social login process
+      await this.simulateSocialLogin(provider);
+
+      // Create mock user data based on provider
+      const socialUser = this.generateSocialUser(provider, providerInfo);
+
+      // Check if user already exists
+      const users = StorageManager.getItem("bankUsers") || [];
+      let existingUser = users.find((u) => u.email === socialUser.email);
+
+      if (existingUser) {
+        // Update last login for existing user
+        existingUser.lastLogin = new Date().toISOString();
+        StorageManager.setItem("bankUsers", users);
+        socialUser.balance = existingUser.balance;
+        socialUser.transactions = existingUser.transactions;
+      } else {
+        // Create new user for first-time social login
+        users.push(socialUser);
+        StorageManager.setItem("bankUsers", users);
+      }
+
+      UserSession.login(socialUser);
+
+      BankUtilities.showNotification(
+        `Successfully signed in with ${providerInfo.name}!`,
+        "success"
+      );
+
       setTimeout(() => {
-        resolve({
-          success: true,
-          user: {
-            id: `social_${provider}_${Date.now()}`,
-            name: `${this.providers[provider].name} User`,
-            email: `user@${provider}.com`,
-            avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(
-              this.providers[provider].name + " User"
-            )}&background=3b82f6&color=fff`,
-          },
-        });
+        window.location.href = "dashboard.html";
+      }, 1000);
+    } catch (error) {
+      BankUtilities.showNotification(
+        `Failed to sign in with ${providerInfo.name}`,
+        "error"
+      );
+      e.currentTarget.innerHTML = originalHTML;
+      e.currentTarget.disabled = false;
+    }
+  }
+
+  async simulateSocialLogin(provider) {
+    return new Promise((resolve, reject) => {
+      // Simulate network delay
+      setTimeout(() => {
+        // Simulate random failures (10% chance)
+        if (Math.random() < 0.1) {
+          reject(new Error(`${provider} authentication failed`));
+        } else {
+          resolve({
+            success: true,
+            user: {
+              name: `${this.providers[provider].name} User`,
+              email: `user@${provider}.com`,
+            },
+          });
+        }
       }, 2000);
     });
+  }
+
+  generateSocialUser(provider, providerInfo) {
+    const timestamp = Date.now();
+    return {
+      id: `social_${provider}_${timestamp}`,
+      name: `${providerInfo.name} User`,
+      email: `user.${timestamp}@${provider}.com`,
+      phone: `+1${Math.floor(1000000000 + Math.random() * 9000000000)}`,
+      balance: 1500,
+      transactions: this.generateInitialTransactions(),
+      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(
+        providerInfo.name + " User"
+      )}&background=10b981&color=fff&size=128`,
+      isSocial: true,
+      createdAt: new Date().toISOString(),
+      lastLogin: new Date().toISOString(),
+      security: {
+        twoFactorEnabled: false,
+        loginNotifications: true,
+      },
+    };
+  }
+
+  generateInitialTransactions() {
+    const transactions = [];
+    const types = ["deposit", "withdrawal"];
+    const descriptions = [
+      "Initial account funding",
+      "Welcome bonus",
+      "Account setup",
+      "Mobile deposit",
+    ];
+
+    for (let i = 0; i < 3; i++) {
+      const type = types[Math.floor(Math.random() * types.length)];
+      const amount =
+        type === "deposit"
+          ? Math.floor(Math.random() * 500) + 100
+          : Math.floor(Math.random() * 200) + 10;
+
+      transactions.push({
+        id: BankUtilities.generateTransactionId(),
+        type: type,
+        amount: amount,
+        description:
+          descriptions[Math.floor(Math.random() * descriptions.length)],
+        timestamp: new Date(
+          Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
+        ).toISOString(),
+        status: "completed",
+      });
+    }
+
+    return transactions;
+  }
+
+  // Method to handle social login callbacks (for real OAuth implementation)
+  handleSocialCallback(provider, data) {
+    console.log(`Social login callback for ${provider}:`, data);
+    // In a real application, this would process the OAuth callback data
   }
 }
 

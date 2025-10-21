@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SecureLogin | World-Class E-Bank</title>
+    <title>Secure Login | World-Class E-Bank</title>
     <meta
       name="description"
       content="Secure login to your World-Class E-Bank account. Experience banking redefined."
@@ -51,9 +51,10 @@
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
-            <li><a href="#features">Features</a></li>
-            <li><a href="#security">Security</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#features">🚀 Features</a></li>
+            <li><a href="#security">🔐 Security</a></li>
+            <li><a href="#about">ℹ️ About</a></li>
+            <li><a href="signup.html">📝 Sign Up</a></li>
           </ul>
         </div>
         <a class="btn btn-ghost text-xl font-bold" href="index.html">
@@ -67,16 +68,20 @@
 
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#security">Security</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#features">🚀 Features</a></li>
+          <li><a href="#security">🔐 Security</a></li>
+          <li><a href="#about">ℹ️ About</a></li>
         </ul>
       </div>
 
       <div class="navbar-end">
-        <a href="signup.html" class="btn btn-outline btn-sm mr-2">Sign Up</a>
+        <a
+          href="signup.html"
+          class="btn btn-outline btn-sm mr-2 transform hover:scale-105 transition-all"
+          >Sign Up</a
+        >
         <button
-          class="btn btn-primary btn-sm"
+          class="btn btn-primary btn-sm transform hover:scale-105 transition-all"
           onclick="window.location.href='#login'"
         >
           Login
@@ -87,6 +92,7 @@
     <!-- Hero Section -->
     <section
       class="hero min-h-screen bg-gradient-to-br from-primary to-secondary text-primary-content"
+      id="login"
     >
       <div
         class="hero-content flex-col lg:flex-row-reverse text-center lg:text-left"
@@ -94,22 +100,27 @@
         <div class="lg:w-1/2 flex justify-center">
           <div class="w-full max-w-md">
             <div
-              class="card bg-base-100 shadow-2xl text-base-content animate-slide-in"
+              class="card bg-base-100 shadow-2xl text-base-content animate-slide-in transform hover:shadow-3xl transition-all duration-300"
             >
               <div class="card-body">
-                <h2 class="card-title justify-center text-2xl font-bold mb-6">
+                <h2 class="card-title justify-center text-2xl font-bold mb-2">
                   Welcome Back
                 </h2>
+                <p class="text-center text-gray-600 mb-6">
+                  Sign in to your WorldBank account
+                </p>
 
                 <form id="login-form">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">Email</span>
+                      <span class="label-text font-semibold"
+                        >Email Address</span
+                      >
                     </label>
                     <input
                       type="email"
                       placeholder="your@email.com"
-                      class="input input-bordered focus:input-primary"
+                      class="input input-bordered focus:input-primary form-input-enhanced"
                       id="login-email"
                       required
                       autocomplete="email"
@@ -118,31 +129,48 @@
 
                   <div class="form-control mt-4">
                     <label class="label">
-                      <span class="label-text">Password</span>
+                      <span class="label-text font-semibold">Password</span>
                     </label>
                     <input
                       type="password"
                       placeholder="••••••••"
-                      class="input input-bordered focus:input-primary"
+                      class="input input-bordered focus:input-primary form-input-enhanced"
                       id="login-password"
                       required
                       autocomplete="current-password"
                     />
                     <label class="label">
-                      <a href="#" class="label-text-alt link link-hover"
+                      <a
+                        href="#"
+                        class="label-text-alt link link-hover"
+                        id="forgot-password"
                         >Forgot password?</a
                       >
                     </label>
                   </div>
 
+                  <div class="form-control mt-4">
+                    <label class="label cursor-pointer justify-start">
+                      <input
+                        type="checkbox"
+                        class="checkbox checkbox-primary mr-3"
+                        id="remember-me"
+                      />
+                      <span class="label-text">Remember me for 30 days</span>
+                    </label>
+                  </div>
+
                   <div class="form-control mt-6">
-                    <button type="submit" class="btn btn-primary">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block transform hover:scale-105 transition-all"
+                    >
                       Login to Your Account
                     </button>
                   </div>
                 </form>
 
-                <div class="divider">OR</div>
+                <div class="divider my-6">OR CONTINUE WITH</div>
 
                 <div class="social-auth-container">
                   <!-- Social buttons will be injected here -->
@@ -163,44 +191,81 @@
           </div>
         </div>
 
-        <div class="lg:w-1/2 mt-10 lg:mt-0 lg:pr-10">
-          <h1 class="text-5xl font-bold">
-            Banking <span class="text-accent">Reimagined</span>
+        <div class="lg:w-1/2 mt-10 lg:mt-0 lg:pr-10 animate-slide-in-left">
+          <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+            Banking <span class="text-accent">Reimagined</span> for the Digital
+            Age
           </h1>
-          <p class="py-6 text-xl opacity-90">
+          <p class="py-6 text-xl opacity-90 leading-relaxed">
             Experience world-class digital banking with cutting-edge security,
-            seamless transactions, and personalized financial insights.
+            seamless transactions, and personalized financial insights. Join
+            millions who trust us with their financial future.
           </p>
-          <div class="flex flex-wrap gap-4 mb-8">
-            <div class="badge badge-lg badge-outline p-4">
+          <div class="flex flex-wrap gap-3 mb-8">
+            <div
+              class="badge badge-lg badge-outline p-4 transform hover:scale-105 transition-all"
+            >
               🔒 Bank-Grade Security
             </div>
-            <div class="badge badge-lg badge-outline p-4">
+            <div
+              class="badge badge-lg badge-outline p-4 transform hover:scale-105 transition-all"
+            >
               ⚡ Instant Transfers
             </div>
-            <div class="badge badge-lg badge-outline p-4">
+            <div
+              class="badge badge-lg badge-outline p-4 transform hover:scale-105 transition-all"
+            >
               🌍 24/7 Global Access
             </div>
           </div>
-          <button
-            class="btn btn-accent btn-lg"
-            onclick="window.location.href='signup.html'"
-          >
-            Get Started Free
-            <svg
-              class="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="btn btn-accent btn-lg transform hover:scale-105 transition-all"
+              onclick="window.location.href='signup.html'"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              ></path>
-            </svg>
-          </button>
+              Get Started Free
+              <svg
+                class="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                ></path>
+              </svg>
+            </button>
+            <button
+              class="btn btn-outline btn-lg transform hover:scale-105 transition-all"
+              onclick="window.location.href='#features'"
+            >
+              Learn More
+            </button>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="mt-12 pt-8 border-t border-white/20">
+            <p class="text-sm opacity-80 mb-4">
+              Trusted by 2M+ customers worldwide
+            </p>
+            <div class="flex flex-wrap gap-6 items-center opacity-70">
+              <div class="flex items-center">
+                <span class="text-success mr-2">✓</span>
+                <span class="text-sm">FDIC Insured</span>
+              </div>
+              <div class="flex items-center">
+                <span class="text-success mr-2">✓</span>
+                <span class="text-sm">256-bit Encryption</span>
+              </div>
+              <div class="flex items-center">
+                <span class="text-success mr-2">✓</span>
+                <span class="text-sm">24/7 Support</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -208,67 +273,123 @@
     <!-- Features Section -->
     <section id="features" class="py-20 bg-base-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-4">
-          Why Choose WorldBank?
-        </h2>
-        <p class="text-xl text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-          We're revolutionizing digital banking with features designed for the
-          modern world.
-        </p>
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+            Why Choose WorldBank?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            We're revolutionizing digital banking with features designed for the
+            modern world. Experience the future of finance today.
+          </p>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Feature 1 -->
-          <div class="card bank-card bg-base-100 shadow-xl">
+          <div
+            class="card bank-card bg-base-100 shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
             <figure class="px-10 pt-10">
               <div
-                class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"
+                class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-4xl"
               >
-                <span class="text-3xl">🚀</span>
+                🚀
               </div>
             </figure>
             <div class="card-body items-center text-center">
-              <h3 class="card-title">Lightning Fast</h3>
-              <p>
+              <h3 class="card-title text-2xl mb-4">Lightning Fast</h3>
+              <p class="text-gray-600 leading-relaxed">
                 Process transactions in seconds, not days. Our optimized
-                infrastructure ensures speedy operations.
+                infrastructure ensures speedy operations with 99.9% uptime
+                guarantee.
               </p>
+              <div class="card-actions mt-4">
+                <button class="btn btn-ghost btn-sm">Learn more</button>
+              </div>
             </div>
           </div>
 
           <!-- Feature 2 -->
-          <div class="card bank-card bg-base-100 shadow-xl">
+          <div
+            class="card bank-card bg-base-100 shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
             <figure class="px-10 pt-10">
               <div
-                class="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center"
+                class="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center text-4xl"
               >
-                <span class="text-3xl">🔐</span>
+                🔐
               </div>
             </figure>
             <div class="card-body items-center text-center">
-              <h3 class="card-title">Military-Grade Security</h3>
-              <p>
-                Your data is protected with bank-level encryption and
-                multi-factor authentication.
+              <h3 class="card-title text-2xl mb-4">Military-Grade Security</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Your data is protected with bank-level encryption, multi-factor
+                authentication, and real-time fraud monitoring. Sleep soundly
+                knowing your money is safe.
               </p>
+              <div class="card-actions mt-4">
+                <button class="btn btn-ghost btn-sm">Learn more</button>
+              </div>
             </div>
           </div>
 
           <!-- Feature 3 -->
-          <div class="card bank-card bg-base-100 shadow-xl">
+          <div
+            class="card bank-card bg-base-100 shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
             <figure class="px-10 pt-10">
               <div
-                class="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center"
+                class="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center text-4xl"
               >
-                <span class="text-3xl">💎</span>
+                💎
               </div>
             </figure>
             <div class="card-body items-center text-center">
-              <h3 class="card-title">Premium Experience</h3>
-              <p>
+              <h3 class="card-title text-2xl mb-4">Premium Experience</h3>
+              <p class="text-gray-600 leading-relaxed">
                 Enjoy a sleek, intuitive interface designed for seamless banking
-                across all devices.
+                across all devices. Beautiful design meets exceptional
+                functionality.
               </p>
+              <div class="card-actions mt-4">
+                <button class="btn btn-ghost btn-sm">Learn more</button>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Additional Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div
+            class="text-center p-6 bg-base-200 rounded-lg transform hover:scale-105 transition-all"
+          >
+            <div class="text-3xl mb-4">🌍</div>
+            <h4 class="font-semibold mb-2">Global Access</h4>
+            <p class="text-sm text-gray-600">Bank from anywhere in the world</p>
+          </div>
+          <div
+            class="text-center p-6 bg-base-200 rounded-lg transform hover:scale-105 transition-all"
+          >
+            <div class="text-3xl mb-4">💳</div>
+            <h4 class="font-semibold mb-2">Zero Fees</h4>
+            <p class="text-sm text-gray-600">
+              No hidden charges or maintenance fees
+            </p>
+          </div>
+          <div
+            class="text-center p-6 bg-base-200 rounded-lg transform hover:scale-105 transition-all"
+          >
+            <div class="text-3xl mb-4">📱</div>
+            <h4 class="font-semibold mb-2">Mobile First</h4>
+            <p class="text-sm text-gray-600">
+              Optimized for all mobile devices
+            </p>
+          </div>
+          <div
+            class="text-center p-6 bg-base-200 rounded-lg transform hover:scale-105 transition-all"
+          >
+            <div class="text-3xl mb-4">🛡️</div>
+            <h4 class="font-semibold mb-2">FDIC Insured</h4>
+            <p class="text-sm text-gray-600">Up to $250,000 in protection</p>
           </div>
         </div>
       </div>
@@ -277,41 +398,192 @@
     <!-- Security Section -->
     <section id="security" class="py-20 bg-base-200">
       <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row items-center">
-          <div class="lg:w-1/2 mb-10 lg:mb-0">
-            <h2 class="text-4xl font-bold mb-6">
-              Your Security is Our <span class="text-primary">Priority</span>
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+              Your Security is Our
+              <span class="text-primary">Top Priority</span>
             </h2>
-            <p class="text-lg mb-6">
+            <p class="text-lg mb-8 leading-relaxed">
               We employ the highest standards of security to protect your
-              financial data and transactions.
+              financial data and transactions. Our multi-layered security
+              approach ensures your peace of mind.
             </p>
-            <ul class="space-y-4">
+            <ul class="space-y-4 mb-8">
               <li class="flex items-start">
-                <span class="text-success mr-2 mt-1">✓</span>
-                <span>256-bit SSL encryption for all data transfers</span>
+                <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                <div>
+                  <span class="font-semibold">256-bit SSL encryption</span> for
+                  all data transfers
+                </div>
               </li>
               <li class="flex items-start">
-                <span class="text-success mr-2 mt-1">✓</span>
-                <span>Multi-factor authentication options</span>
+                <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                <div>
+                  <span class="font-semibold">Multi-factor authentication</span>
+                  options including biometrics
+                </div>
               </li>
               <li class="flex items-start">
-                <span class="text-success mr-2 mt-1">✓</span>
-                <span>Real-time fraud monitoring and alerts</span>
+                <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                <div>
+                  <span class="font-semibold">Real-time fraud monitoring</span>
+                  and instant alerts
+                </div>
               </li>
               <li class="flex items-start">
-                <span class="text-success mr-2 mt-1">✓</span>
-                <span>Biometric login support</span>
+                <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                <div>
+                  <span class="font-semibold">Biometric login support</span> for
+                  mobile devices
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                <div>
+                  <span class="font-semibold">Regular security audits</span> and
+                  penetration testing
+                </div>
               </li>
             </ul>
-          </div>
-          <div class="lg:w-1/2 flex justify-center">
-            <div
-              class="security-shield w-64 h-64 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
-            >
-              <span class="text-6xl text-white">🛡️</span>
+            <div class="flex gap-4">
+              <button
+                class="btn btn-primary transform hover:scale-105 transition-all"
+              >
+                Learn About Security
+              </button>
+              <button
+                class="btn btn-outline transform hover:scale-105 transition-all"
+              >
+                Security Tips
+              </button>
             </div>
           </div>
+          <div class="lg:w-1/2 flex justify-center">
+            <div class="relative">
+              <div
+                class="security-shield w-64 h-64 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-2xl"
+              >
+                <span class="text-6xl text-white">🛡️</span>
+              </div>
+              <div
+                class="absolute -top-4 -right-4 bg-success text-success-content rounded-full p-4 shadow-lg"
+              >
+                <span class="font-bold">100%</span>
+              </div>
+              <div
+                class="absolute -bottom-4 -left-4 bg-warning text-warning-content rounded-full p-4 shadow-lg"
+              >
+                <span class="font-bold">Secure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-base-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-4">About WorldBank</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Founded with a vision to revolutionize digital banking, WorldBank
+            combines cutting-edge technology with exceptional customer service
+            to deliver a banking experience like no other.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-3xl font-bold mb-6">Our Mission</h3>
+            <p class="text-lg mb-6 leading-relaxed">
+              To make banking accessible, secure, and delightful for everyone.
+              We believe that financial services should be transparent,
+              affordable, and available to all.
+            </p>
+            <div
+              class="stats stats-vertical lg:stats-horizontal shadow bg-base-200"
+            >
+              <div class="stat">
+                <div class="stat-title">Happy Customers</div>
+                <div class="stat-value text-primary">2M+</div>
+                <div class="stat-desc">Worldwide</div>
+              </div>
+              <div class="stat">
+                <div class="stat-title">Transactions</div>
+                <div class="stat-value text-secondary">$50B+</div>
+                <div class="stat-desc">Processed</div>
+              </div>
+              <div class="stat">
+                <div class="stat-title">Uptime</div>
+                <div class="stat-value text-accent">99.9%</div>
+                <div class="stat-desc">Reliability</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 text-primary-content transform hover:scale-105 transition-all duration-300"
+          >
+            <h3 class="text-2xl font-bold mb-4">Join the Revolution</h3>
+            <p class="mb-6 opacity-90">
+              Be part of the future of banking. Experience the difference that
+              customer-focused technology can make in managing your finances.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <span class="mr-3">✅</span>
+                <span>No monthly fees</span>
+              </div>
+              <div class="flex items-center">
+                <span class="mr-3">✅</span>
+                <span>Instant account setup</span>
+              </div>
+              <div class="flex items-center">
+                <span class="mr-3">✅</span>
+                <span>24/7 customer support</span>
+              </div>
+              <div class="flex items-center">
+                <span class="mr-3">✅</span>
+                <span>Global money transfers</span>
+              </div>
+            </div>
+            <button
+              class="btn btn-accent btn-block mt-6 transform hover:scale-105 transition-all"
+              onclick="window.location.href='signup.html'"
+            >
+              Start Your Journey
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="py-16 bg-gradient-to-r from-primary to-secondary text-primary-content"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+          Ready to Get Started?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          Join millions of satisfied customers who have already experienced the
+          future of banking.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            class="btn btn-accent btn-lg transform hover:scale-105 transition-all"
+            onclick="window.location.href='signup.html'"
+          >
+            Create Free Account
+          </button>
+          <button
+            class="btn btn-outline btn-lg text-primary-content border-primary-content transform hover:scale-105 transition-all"
+            onclick="window.location.href='#login'"
+          >
+            Sign In
+          </button>
         </div>
       </div>
     </section>
@@ -327,15 +599,32 @@
             WorldBank
           </h3>
         </div>
-        <p class="font-bold">
-          World-Class Digital Banking<br />Trusted by millions worldwide
+        <p class="font-bold text-lg">World-Class Digital Banking</p>
+        <p>Trusted by millions worldwide since 2024</p>
+        <p class="text-sm mt-2 text-gray-600">
+          Copyright © 2024 - All rights reserved
         </p>
-        <p>Copyright © 2024 - All rights reserved</p>
       </aside>
       <nav>
+        <div class="grid grid-flow-col gap-6">
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >About us</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Contact</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Jobs</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Press kit</a
+          >
+        </div>
+      </nav>
+      <nav>
         <div class="grid grid-flow-col gap-4">
-          <a
-            ><svg
+          <a class="transform hover:scale-110 transition-all">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -344,10 +633,11 @@
             >
               <path
                 d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
-              ></path></svg
-          ></a>
-          <a
-            ><svg
+              ></path>
+            </svg>
+          </a>
+          <a class="transform hover:scale-110 transition-all">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -356,10 +646,11 @@
             >
               <path
                 d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-              ></path></svg
-          ></a>
-          <a
-            ><svg
+              ></path>
+            </svg>
+          </a>
+          <a class="transform hover:scale-110 transition-all">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -368,8 +659,9 @@
             >
               <path
                 d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-              ></path></svg
-          ></a>
+              ></path>
+            </svg>
+          </a>
         </div>
       </nav>
     </footer>

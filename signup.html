@@ -41,17 +41,21 @@
       </div>
 
       <div class="navbar-end">
-        <a href="index.html" class="btn btn-ghost btn-sm">Back to Login</a>
+        <a
+          href="index.html"
+          class="btn btn-ghost btn-sm transform hover:scale-105 transition-all"
+          >Back to Login</a
+        >
       </div>
     </nav>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-10">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <!-- Progress Steps -->
         <div class="flex justify-center mb-10">
           <ul class="steps steps-vertical lg:steps-horizontal">
-            <li class="step step-primary">Account Details</li>
+            <li class="step step-primary font-semibold">Account Details</li>
             <li class="step">Verification</li>
             <li class="step">Security Setup</li>
             <li class="step">Complete</li>
@@ -72,12 +76,12 @@
               <form id="signup-form">
                 <div class="form-control">
                   <label class="label">
-                    <span class="label-text">Full Name</span>
+                    <span class="label-text font-semibold">Full Name</span>
                   </label>
                   <input
                     type="text"
                     placeholder="John Doe"
-                    class="input input-bordered focus:input-primary"
+                    class="input input-bordered focus:input-primary form-input-enhanced"
                     id="signup-name"
                     required
                     autocomplete="name"
@@ -86,12 +90,12 @@
 
                 <div class="form-control mt-4">
                   <label class="label">
-                    <span class="label-text">Email Address</span>
+                    <span class="label-text font-semibold">Email Address</span>
                   </label>
                   <input
                     type="email"
                     placeholder="your@email.com"
-                    class="input input-bordered focus:input-primary"
+                    class="input input-bordered focus:input-primary form-input-enhanced"
                     id="signup-email"
                     required
                     autocomplete="email"
@@ -100,12 +104,12 @@
 
                 <div class="form-control mt-4">
                   <label class="label">
-                    <span class="label-text">Phone Number</span>
+                    <span class="label-text font-semibold">Phone Number</span>
                   </label>
                   <input
                     type="tel"
                     placeholder="+1 (555) 123-4567"
-                    class="input input-bordered focus:input-primary"
+                    class="input input-bordered focus:input-primary form-input-enhanced"
                     id="signup-phone"
                     required
                     autocomplete="tel"
@@ -114,31 +118,42 @@
 
                 <div class="form-control mt-4">
                   <label class="label">
-                    <span class="label-text">Password</span>
+                    <span class="label-text font-semibold">Password</span>
                   </label>
                   <input
                     type="password"
                     placeholder="••••••••"
-                    class="input input-bordered focus:input-primary"
+                    class="input input-bordered focus:input-primary form-input-enhanced"
                     id="signup-password"
                     required
                     autocomplete="new-password"
                   />
                   <label class="label">
                     <span class="label-text-alt"
-                      >Must be at least 8 characters</span
+                      >Must be at least 8 characters with uppercase, lowercase,
+                      number, and special character</span
                     >
                   </label>
                 </div>
 
+                <!-- Password Strength Indicator -->
+                <div
+                  id="password-strength"
+                  class="mt-2 p-3 bg-base-200 rounded-lg hidden"
+                >
+                  <!-- Password requirements will be shown here -->
+                </div>
+
                 <div class="form-control mt-4">
                   <label class="label">
-                    <span class="label-text">Confirm Password</span>
+                    <span class="label-text font-semibold"
+                      >Confirm Password</span
+                    >
                   </label>
                   <input
                     type="password"
                     placeholder="••••••••"
-                    class="input input-bordered focus:input-primary"
+                    class="input input-bordered focus:input-primary form-input-enhanced"
                     id="signup-confirm-password"
                     required
                     autocomplete="new-password"
@@ -155,21 +170,28 @@
                     />
                     <span class="label-text">
                       I agree to the
-                      <a href="#" class="link link-primary">Terms of Service</a>
+                      <a href="#" class="link link-primary font-semibold"
+                        >Terms of Service</a
+                      >
                       and
-                      <a href="#" class="link link-primary">Privacy Policy</a>
+                      <a href="#" class="link link-primary font-semibold"
+                        >Privacy Policy</a
+                      >
                     </span>
                   </label>
                 </div>
 
                 <div class="form-control mt-6">
-                  <button type="submit" class="btn btn-primary btn-block">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block transform hover:scale-105 transition-all"
+                  >
                     Create Account
                   </button>
                 </div>
               </form>
 
-              <div class="divider">OR</div>
+              <div class="divider my-6">OR SIGN UP WITH</div>
 
               <div class="social-auth-container">
                 <!-- Social buttons will be injected here -->
@@ -188,56 +210,88 @@
 
           <!-- Benefits Sidebar -->
           <div class="space-y-6">
-            <div class="card bg-primary text-primary-content">
+            <div
+              class="card bg-primary text-primary-content transform hover:scale-105 transition-all duration-300"
+            >
               <div class="card-body">
-                <h3 class="card-title">🎁 Welcome Bonus</h3>
-                <p>
-                  Get $10 free when you open your account and complete your
-                  first transaction!
+                <h3 class="card-title text-xl">🎁 Welcome Bonus</h3>
+                <p class="text-lg">
+                  Get <strong>$10 free</strong> when you open your account and
+                  complete your first transaction!
                 </p>
+                <div class="badge badge-secondary badge-lg mt-2">
+                  Limited Time Offer
+                </div>
               </div>
             </div>
 
-            <div class="card bg-base-100 shadow">
+            <div
+              class="card bg-base-100 shadow transform hover:scale-105 transition-all duration-300"
+            >
               <div class="card-body">
-                <h3 class="card-title">✨ Premium Features</h3>
-                <ul class="space-y-3 mt-3">
+                <h3 class="card-title text-xl">✨ Premium Features</h3>
+                <ul class="space-y-4 mt-4">
                   <li class="flex items-start">
-                    <span class="text-success mr-2 mt-1">✓</span>
-                    <span>Zero maintenance fees</span>
+                    <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                    <div>
+                      <span class="font-semibold">Zero maintenance fees</span>
+                      <p class="text-sm text-gray-600">
+                        No hidden charges ever
+                      </p>
+                    </div>
                   </li>
                   <li class="flex items-start">
-                    <span class="text-success mr-2 mt-1">✓</span>
-                    <span>Instant money transfers</span>
+                    <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                    <div>
+                      <span class="font-semibold">Instant money transfers</span>
+                      <p class="text-sm text-gray-600">Send money in seconds</p>
+                    </div>
                   </li>
                   <li class="flex items-start">
-                    <span class="text-success mr-2 mt-1">✓</span>
-                    <span>24/7 customer support</span>
+                    <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                    <div>
+                      <span class="font-semibold">24/7 customer support</span>
+                      <p class="text-sm text-gray-600">Always here to help</p>
+                    </div>
                   </li>
                   <li class="flex items-start">
-                    <span class="text-success mr-2 mt-1">✓</span>
-                    <span>Advanced security features</span>
+                    <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                    <div>
+                      <span class="font-semibold"
+                        >Advanced security features</span
+                      >
+                      <p class="text-sm text-gray-600">Bank-level protection</p>
+                    </div>
                   </li>
                   <li class="flex items-start">
-                    <span class="text-success mr-2 mt-1">✓</span>
-                    <span>Mobile banking app access</span>
+                    <span class="text-success mr-3 mt-1 text-xl">✓</span>
+                    <div>
+                      <span class="font-semibold"
+                        >Mobile banking app access</span
+                      >
+                      <p class="text-sm text-gray-600">Bank on the go</p>
+                    </div>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div class="card bg-base-100 shadow">
+            <div
+              class="card bg-base-100 shadow transform hover:scale-105 transition-all duration-300"
+            >
               <div class="card-body">
-                <h3 class="card-title">🔒 Security First</h3>
-                <p class="mt-2">
+                <h3 class="card-title text-xl">🔒 Security First</h3>
+                <p class="mt-2 text-gray-600">
                   We use bank-level encryption and security protocols to ensure
                   your data and money are always safe.
                 </p>
-                <div class="flex items-center mt-4">
+                <div
+                  class="flex items-center mt-4 p-3 bg-success/10 rounded-lg"
+                >
                   <div
-                    class="w-10 h-10 bg-success/20 rounded-full flex items-center justify-center mr-3"
+                    class="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center mr-4"
                   >
-                    <span class="text-success text-xl">✓</span>
+                    <span class="text-success text-2xl">✓</span>
                   </div>
                   <div>
                     <p class="font-semibold">Verified & Secure</p>
@@ -246,7 +300,73 @@
                     </p>
                   </div>
                 </div>
+                <div class="mt-4 grid grid-cols-2 gap-3 text-center">
+                  <div class="p-2 bg-base-200 rounded">
+                    <div class="text-lg">🔐</div>
+                    <p class="text-xs font-semibold">256-bit SSL</p>
+                  </div>
+                  <div class="p-2 bg-base-200 rounded">
+                    <div class="text-lg">🛡️</div>
+                    <p class="text-xs font-semibold">Fraud Protection</p>
+                  </div>
+                  <div class="p-2 bg-base-200 rounded">
+                    <div class="text-lg">📱</div>
+                    <p class="text-xs font-semibold">2FA Ready</p>
+                  </div>
+                  <div class="p-2 bg-base-200 rounded">
+                    <div class="text-lg">👁️</div>
+                    <p class="text-xs font-semibold">Privacy First</p>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div
+              class="card bg-base-100 shadow transform hover:scale-105 transition-all duration-300"
+            >
+              <div class="card-body">
+                <h3 class="card-title text-xl">💬 What Our Customers Say</h3>
+                <div class="space-y-4 mt-4">
+                  <div class="bg-base-200 p-4 rounded-lg">
+                    <p class="text-sm italic">
+                      "WorldBank made switching from my traditional bank so
+                      easy. The app is incredible!"
+                    </p>
+                    <p class="text-xs text-gray-600 mt-2">- Sarah M.</p>
+                  </div>
+                  <div class="bg-base-200 p-4 rounded-lg">
+                    <p class="text-sm italic">
+                      "Finally, a bank that understands modern needs. Instant
+                      transfers are a game-changer!"
+                    </p>
+                    <p class="text-xs text-gray-600 mt-2">- Michael T.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="mt-12 text-center">
+          <p class="text-gray-600 mb-6">Trusted by 2M+ customers worldwide</p>
+          <div class="flex flex-wrap justify-center gap-8 opacity-60">
+            <div class="flex items-center">
+              <span class="text-success mr-2">✓</span>
+              <span>FDIC Insured</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-success mr-2">✓</span>
+              <span>PCI Compliant</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-success mr-2">✓</span>
+              <span>GDPR Compliant</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-success mr-2">✓</span>
+              <span>256-bit Encryption</span>
             </div>
           </div>
         </div>
@@ -266,11 +386,71 @@
             WorldBank
           </h3>
         </div>
-        <p class="font-bold">
-          World-Class Digital Banking<br />Trusted by millions worldwide
+        <p class="font-bold text-lg">World-Class Digital Banking</p>
+        <p>Trusted by millions worldwide since 2024</p>
+        <p class="text-sm mt-2 text-gray-600">
+          Copyright © 2024 - All rights reserved
         </p>
-        <p>Copyright © 2024 - All rights reserved</p>
       </aside>
+      <nav>
+        <div class="grid grid-flow-col gap-6">
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >About us</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Contact</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Privacy Policy</a
+          >
+          <a class="link link-hover transform hover:scale-110 transition-all"
+            >Terms of Service</a
+          >
+        </div>
+      </nav>
+      <nav>
+        <div class="grid grid-flow-col gap-4">
+          <a class="transform hover:scale-110 transition-all">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+              ></path>
+            </svg>
+          </a>
+          <a class="transform hover:scale-110 transition-all">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+              ></path>
+            </svg>
+          </a>
+          <a class="transform hover:scale-110 transition-all">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current"
+            >
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
     </footer>
 
     <!-- JavaScript -->

@@ -1,4 +1,4 @@
-// Enhanced utility functions
+// Enhanced utility functions with improved error handling
 class BankUtilities {
   // Get input field value
   static getInputValue(id) {
@@ -13,16 +13,6 @@ class BankUtilities {
     return isNaN(number) ? 0 : number;
   }
 
-  // Get text content as number
-  static getTextAsNumber(id) {
-    const element = document.getElementById(id);
-    if (!element) return 0;
-
-    const text = element.textContent || element.innerText;
-    const number = parseFloat(text.replace(/[^\d.-]/g, ""));
-    return isNaN(number) ? 0 : number;
-  }
-
   // Format currency
   static formatCurrency(amount) {
     return new Intl.NumberFormat("en-US", {
@@ -33,11 +23,18 @@ class BankUtilities {
 
   // Show notification
   static showNotification(message, type = "info") {
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll(
+      ".custom-notification"
+    );
+    existingNotifications.forEach((notification) => notification.remove());
+
     const notification = document.createElement("div");
-    notification.className = `alert alert-${type} fixed top-4 right-4 z-50 max-w-md shadow-lg transform transition-transform duration-300 translate-x-full`;
+    notification.className = `custom-notification alert alert-${type} fixed top-4 right-4 z-50 max-w-md shadow-lg transform transition-all duration-300 translate-x-full`;
     notification.innerHTML = `
-      <div class="flex items-center">
+      <div class="flex items-center justify-between">
         <span>${message}</span>
+        <button class="btn btn-ghost btn-xs" onclick="this.parentElement.parentElement.remove()">✕</button>
       </div>
     `;
 
@@ -51,14 +48,16 @@ class BankUtilities {
 
     // Remove after delay
     setTimeout(() => {
-      notification.classList.remove("translate-x-0");
-      notification.classList.add("translate-x-full");
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
-        }
-      }, 300);
-    }, 3000);
+      if (notification.parentNode) {
+        notification.classList.remove("translate-x-0");
+        notification.classList.add("translate-x-full");
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+    }, 5000);
   }
 
   // Validate email
@@ -80,6 +79,64 @@ class BankUtilities {
     );
   }
 
+  // Validate password strength
+  static validatePassword(password) {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    return {
+      isValid:
+        password.length >= minLength &&
+        hasUpperCase &&
+        hasLowerCase &&
+        hasNumbers &&
+        hasSpecialChar,
+      requirements: {
+        minLength: password.length >= minLength,
+        hasUpperCase,
+        hasLowerCase,
+        hasNumbers,
+        hasSpecialChar,
+      },
+    };
+  }
+
+  // Format date
+  static formatDate(dateString) {
+    const options = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+    return new Date(dateString).toLocaleDateString("en-US", options);
+  }
+
+  // Download data as PDF (simulated)
+  static downloadAsPDF(data, filename) {
+    // In a real application, this would generate an actual PDF
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${filename}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    this.showNotification(
+      `Downloading ${filename} as JSON (PDF simulation)`,
+      "info"
+    );
+  }
+
   // Debounce function
   static debounce(func, wait) {
     let timeout;
@@ -94,7 +151,7 @@ class BankUtilities {
   }
 }
 
-// Local Storage Management
+// Enhanced Local Storage Management
 class StorageManager {
   static setItem(key, value) {
     try {
@@ -102,6 +159,7 @@ class StorageManager {
       return true;
     } catch (error) {
       console.error("Error saving to localStorage:", error);
+      BankUtilities.showNotification("Error saving data", "error");
       return false;
     }
   }
@@ -137,11 +195,12 @@ class StorageManager {
   }
 }
 
-// User Session Management
+// Enhanced User Session Management
 class UserSession {
   static login(userData) {
     StorageManager.setItem("currentUser", userData);
     StorageManager.setItem("isLoggedIn", true);
+    StorageManager.setItem("lastLogin", new Date().toISOString());
   }
 
   static logout() {
@@ -162,6 +221,14 @@ class UserSession {
     if (user) {
       user.balance = newBalance;
       StorageManager.setItem("currentUser", user);
+
+      // Also update in bankUsers array
+      const users = StorageManager.getItem("bankUsers") || [];
+      const userIndex = users.findIndex((u) => u.id === user.id);
+      if (userIndex !== -1) {
+        users[userIndex].balance = newBalance;
+        StorageManager.setItem("bankUsers", users);
+      }
     }
   }
 
@@ -171,23 +238,60 @@ class UserSession {
       if (!user.transactions) {
         user.transactions = [];
       }
-      user.transactions.unshift({
+
+      const newTransaction = {
         id: BankUtilities.generateTransactionId(),
         ...transaction,
         timestamp: new Date().toISOString(),
-      });
+        status: "completed",
+      };
 
-      // Keep only last 50 transactions
-      if (user.transactions.length > 50) {
-        user.transactions = user.transactions.slice(0, 50);
+      user.transactions.unshift(newTransaction);
+
+      // Keep only last 100 transactions
+      if (user.transactions.length > 100) {
+        user.transactions = user.transactions.slice(0, 100);
       }
 
       StorageManager.setItem("currentUser", user);
+
+      // Also update in bankUsers array
+      const users = StorageManager.getItem("bankUsers") || [];
+      const userIndex = users.findIndex((u) => u.id === user.id);
+      if (userIndex !== -1) {
+        if (!users[userIndex].transactions) {
+          users[userIndex].transactions = [];
+        }
+        users[userIndex].transactions.unshift(newTransaction);
+        if (users[userIndex].transactions.length > 100) {
+          users[userIndex].transactions = users[userIndex].transactions.slice(
+            0,
+            100
+          );
+        }
+        StorageManager.setItem("bankUsers", users);
+      }
+
+      return newTransaction;
     }
   }
-}
 
-// Export for use in other modules
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { BankUtilities, StorageManager, UserSession };
+  static updateUserProfile(profileData) {
+    const user = this.getCurrentUser();
+    if (user) {
+      Object.assign(user, profileData);
+      StorageManager.setItem("currentUser", user);
+
+      // Also update in bankUsers array
+      const users = StorageManager.getItem("bankUsers") || [];
+      const userIndex = users.findIndex((u) => u.id === user.id);
+      if (userIndex !== -1) {
+        Object.assign(users[userIndex], profileData);
+        StorageManager.setItem("bankUsers", users);
+      }
+
+      return true;
+    }
+    return false;
+  }
 }
