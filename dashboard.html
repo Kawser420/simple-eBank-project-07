@@ -9,22 +9,24 @@
       content="Manage your finances with WorldBank's advanced dashboard. Track transactions, transfer money, and more."
     />
 
-    <!-- Tailwind CSS & DaisyUI -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- DaisyUI Component CDN -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
       rel="stylesheet"
       type="text/css"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS Link -->
     <link rel="stylesheet" href="css/custom.css" />
 
     <!-- Favicon -->
     <link
       rel="icon"
       type="image/x-icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>W</text></svg>"
     />
   </head>
   <body class="min-h-screen bg-base-200">
@@ -52,25 +54,23 @@
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a class="nav-btn" data-target="dashboard-section"
-                >📊 Dashboard</a
-              >
+              <a class="nav-btn" data-target="dashboard-section">Dashboard</a>
             </li>
             <li>
               <a class="nav-btn" data-target="transactions-section"
-                >💳 Transactions</a
+                >Transactions</a
               >
             </li>
             <li>
-              <a class="nav-btn" data-target="transfer-section">🔄 Transfer</a>
+              <a class="nav-btn" data-target="transfer-section">Transfer</a>
             </li>
             <li>
-              <a class="nav-btn" data-target="settings-section">⚙️ Settings</a>
+              <a class="nav-btn" data-target="settings-section">Settings</a>
             </li>
           </ul>
         </div>
         <a class="btn btn-ghost text-xl font-bold" href="dashboard.html">
-          <span class="text-primary">🏦</span>
+          <span class="text-primary">W</span>
           <span
             class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
             >WorldBank</span
@@ -269,9 +269,9 @@
                 <div class="card-actions justify-between items-center mt-4">
                   <div>
                     <p class="text-sm opacity-80">
-                      Account: <span id="account-number">•••• 4832</span>
+                      Account: <span id="account-number">.... 4832</span>
                     </p>
-                    <p class="text-sm opacity-80" id="user-name">Loading...</p>
+                    <p class="text-sm opacity-80" id="user-name">Loading....</p>
                   </div>
                   <div class="badge badge-lg badge-outline pulse-glow">
                     Active
@@ -324,7 +324,7 @@
               <div id="recent-transactions" class="space-y-4">
                 <!-- Transactions will be loaded here -->
                 <div class="text-center py-8">
-                  <div class="text-4xl mb-4">📊</div>
+                  <div class="text-4xl mb-4">D</div>
                   <p class="text-gray-500">No transactions yet</p>
                   <p class="text-sm text-gray-400">
                     Your transactions will appear here
@@ -357,7 +357,7 @@
                   <!-- Transactions will be loaded here -->
                   <tr>
                     <td colspan="6" class="text-center py-8">
-                      <div class="text-4xl mb-4">📊</div>
+                      <div class="text-4xl mb-4">D</div>
                       <p class="text-gray-500">No transactions yet</p>
                     </td>
                   </tr>
@@ -443,7 +443,7 @@
           <div class="space-y-6">
             <div class="card bg-base-100 shadow">
               <div class="card-body">
-                <h3 class="card-title">💡 Transfer Tips</h3>
+                <h3 class="card-title">Transfer Tips</h3>
                 <ul class="space-y-2 mt-3">
                   <li class="flex items-start">
                     <span class="text-info mr-2 mt-1">•</span>
@@ -463,7 +463,7 @@
 
             <div class="card bg-base-100 shadow">
               <div class="card-body">
-                <h3 class="card-title">📞 Need Help?</h3>
+                <h3 class="card-title">Need Help?</h3>
                 <p class="mt-2">
                   Our support team is available 24/7 to assist with any transfer
                   issues.
@@ -535,9 +535,7 @@
           </div>
 
           <div class="space-y-6">
-            <div id="theme-section">
-              <!-- Theme selector will be injected here -->
-            </div>
+            <div id="theme-section"></div>
 
             <div class="card bg-base-100 shadow">
               <div class="card-body">
@@ -809,7 +807,8 @@
       <div class="modal-box">
         <h3 class="font-bold text-lg">Transaction Details</h3>
         <div id="transaction-details-content" class="mt-4">
-          <!-- Transaction details will be loaded here -->
+          <!-- Transaction details load here: -->
+          <!-- ------------------------------------------------------------------ -->
         </div>
       </div>
     </dialog>
@@ -820,7 +819,7 @@
     >
       <aside>
         <div class="flex items-center justify-center mb-4">
-          <span class="text-3xl mr-2">🏦</span>
+          <span class="text-3xl mr-2">W</span>
           <h3
             class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
           >
