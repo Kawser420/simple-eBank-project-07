@@ -1,5 +1,4 @@
 class BankUtilities {
-  // Get input field value
   static getInputValue(id) {
     const element = document.getElementById(id);
     return element ? element.value.trim() : "";
@@ -216,7 +215,6 @@ class UserSession {
       user.balance = newBalance;
       StorageManager.setItem("currentUser", user);
 
-      // Also update in bankUsers array
       const users = StorageManager.getItem("bankUsers") || [];
       const userIndex = users.findIndex((u) => u.id === user.id);
       if (userIndex !== -1) {
@@ -242,7 +240,7 @@ class UserSession {
 
       user.transactions.unshift(newTransaction);
 
-      // Keep only last 100 transactions
+      // Keep Only Last 100 Transactions
       if (user.transactions.length > 100) {
         user.transactions = user.transactions.slice(0, 100);
       }
@@ -287,3 +285,6 @@ class UserSession {
     return false;
   }
 }
+
+// utilis js code end
+// ------------------------------------------------>>>

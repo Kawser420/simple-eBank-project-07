@@ -44,7 +44,7 @@ class TransactionsManager {
     if (filteredTransactions.length === 0) {
       const emptyMessage = `
         <div class="col-span-full text-center py-12">
-          <div class="text-6xl mb-4">📊</div>
+          <div class="text-6xl mb-4">filter</div>
           <h3 class="text-xl font-semibold text-gray-600 mb-2">No transactions found</h3>
           <p class="text-gray-500">Try adjusting your filters or make your first transaction</p>
         </div>
@@ -78,19 +78,19 @@ class TransactionsManager {
       deposit: {
         color: "text-success",
         bgColor: "bg-success",
-        icon: "⬇️",
+        icon: "in",
         badge: "Deposit",
       },
       withdrawal: {
         color: "text-error",
         bgColor: "bg-error",
-        icon: "⬆️",
+        icon: "out",
         badge: "Withdrawal",
       },
       transfer: {
         color: "text-info",
         bgColor: "bg-info",
-        icon: "🔄",
+        icon: "tf",
         badge: "Transfer",
       },
     };
@@ -163,12 +163,12 @@ class TransactionsManager {
             <button class="btn btn-ghost btn-sm" onclick="transactionsManager.downloadTransaction('${
               transaction.id
             }')">
-              📥 Download
+              Download
             </button>
             <button class="btn btn-ghost btn-sm" onclick="transactionsManager.viewTransactionDetails('${
               transaction.id
             }')">
-              👁️ Details
+              Details
             </button>
           </div>
         </div>
@@ -202,10 +202,10 @@ class TransactionsManager {
             } text-white flex items-center justify-center">
               ${
                 transaction.type === "deposit"
-                  ? "⬇️"
+                  ? "in"
                   : transaction.type === "withdrawal"
-                  ? "⬆️"
-                  : "🔄"
+                  ? "out"
+                  : "tf"
               }
             </div>
             <div>
@@ -235,12 +235,12 @@ class TransactionsManager {
             <button class="btn btn-ghost btn-xs" onclick="transactionsManager.downloadTransaction('${
               transaction.id
             }')">
-              📥
+              download
             </button>
             <button class="btn btn-ghost btn-xs" onclick="transactionsManager.viewTransactionDetails('${
               transaction.id
             }')">
-              👁️
+              eays
             </button>
           </div>
         </td>
@@ -492,9 +492,9 @@ class TransactionsManager {
 
   createTransactionDetailsHTML(transaction) {
     const typeConfig = {
-      deposit: { color: "success", icon: "⬇️" },
-      withdrawal: { color: "error", icon: "⬆️" },
-      transfer: { color: "info", icon: "🔄" },
+      deposit: { color: "success", icon: "in" },
+      withdrawal: { color: "error", icon: "out" },
+      transfer: { color: "info", icon: "tf" },
     };
 
     const config = typeConfig[transaction.type] || typeConfig.deposit;
@@ -591,11 +591,11 @@ class TransactionsManager {
       if (isGridView) {
         container.classList.add("hidden");
         tableView.classList.remove("hidden");
-        viewToggle.innerHTML = '<span class="mr-2">🔄</span> Grid View';
+        viewToggle.innerHTML = '<span class="mr-2">tf</span> Grid View';
       } else {
         container.classList.remove("hidden");
         tableView.classList.add("hidden");
-        viewToggle.innerHTML = '<span class="mr-2">📋</span> Table View';
+        viewToggle.innerHTML = '<span class="mr-2">r</span> Table View';
       }
     }
   }
@@ -632,3 +632,5 @@ class TransactionsManager {
 document.addEventListener("DOMContentLoaded", () => {
   window.transactionsManager = new TransactionsManager();
 });
+
+// transactions end js code
