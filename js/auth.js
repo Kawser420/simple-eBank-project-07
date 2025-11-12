@@ -1,4 +1,5 @@
-// Authentication System
+// Authentication
+// ------------------------------------------------->>>>
 class AuthManager {
   constructor() {
     this.init();
@@ -29,25 +30,25 @@ class AuthManager {
   }
 
   attachEventListeners() {
-    // Login form
+    // Login Form
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => this.handleLogin(e));
     }
 
-    // Signup form
+    // Signup Form
     const signupForm = document.getElementById("signup-form");
     if (signupForm) {
       signupForm.addEventListener("submit", (e) => this.handleSignup(e));
     }
 
-    // Logout button
+    // Logout Button
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
       logoutBtn.addEventListener("click", () => this.handleLogout());
     }
 
-    // Forgot password
+    // Forgot Password
     const forgotPasswordLink = document.querySelector(
       'a[href="#forgot-password"]'
     );
@@ -58,12 +59,12 @@ class AuthManager {
       });
     }
 
-    // Social login buttons
+    // Social Login Buttons
     document.querySelectorAll(".social-login-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => this.handleSocialLogin(e));
     });
 
-    // Real-time password validation for signup
+    // Real-time Password Validation For SignUp
     const signupPassword = document.getElementById("signup-password");
     if (signupPassword) {
       signupPassword.addEventListener("input", (e) =>
@@ -73,19 +74,19 @@ class AuthManager {
   }
 
   initializePasswordToggle() {
-    // Add password toggle functionality
+    // Add Password Toggle
     document.querySelectorAll('input[type="password"]').forEach((input) => {
       const parent = input.parentElement;
       const toggleBtn = document.createElement("button");
       toggleBtn.type = "button";
       toggleBtn.className =
         "absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700";
-      toggleBtn.innerHTML = "👁️";
+      toggleBtn.innerHTML = "eyes";
       toggleBtn.addEventListener("click", () => {
         const type =
           input.getAttribute("type") === "password" ? "text" : "password";
         input.setAttribute("type", type);
-        toggleBtn.innerHTML = type === "password" ? "👁️" : "🔒";
+        toggleBtn.innerHTML = type === "password" ? "eyes" : "hide";
       });
 
       if (!parent.querySelector(".password-toggle")) {
@@ -152,7 +153,7 @@ class AuthManager {
       return;
     }
 
-    // Show loading state
+    // Show Loading State
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML =
@@ -270,7 +271,6 @@ class AuthManager {
     submitBtn.disabled = true;
 
     try {
-      // Simulate API call
       await new Promise((resolve, reject) => {
         setTimeout(() => {
           const users = StorageManager.getItem("bankUsers") || [];
@@ -279,7 +279,7 @@ class AuthManager {
             return;
           }
 
-          // Create new user
+          // Create New User
           const newUser = {
             id: "user_" + Date.now(),
             name,
@@ -342,16 +342,16 @@ class AuthManager {
   async handleSocialLogin(e) {
     const provider = e.currentTarget.dataset.provider;
     const providers = {
-      google: { name: "Google", color: "bg-red-500", icon: "🔍" },
-      facebook: { name: "Facebook", color: "bg-blue-600", icon: "👤" },
-      github: { name: "GitHub", color: "bg-gray-800", icon: "💻" },
-      twitter: { name: "Twitter", color: "bg-sky-500", icon: "🐦" },
+      Google: { name: "Google", color: "bg-red-500" },
+      Facebook: { name: "Facebook", color: "bg-blue-600" },
+      Github: { name: "GitHub", color: "bg-gray-800" },
+      X: { name: "X", color: "bg-sky-500" },
     };
 
     const providerInfo = providers[provider];
     if (!providerInfo) return;
 
-    // Show loading
+    // Show Loading
     const originalHTML = e.currentTarget.innerHTML;
     e.currentTarget.innerHTML = `<span class="loading loading-spinner"></span> Connecting to ${providerInfo.name}...`;
     e.currentTarget.disabled = true;
@@ -411,3 +411,5 @@ class AuthManager {
 document.addEventListener("DOMContentLoaded", () => {
   new AuthManager();
 });
+
+// Auth End------------>>>

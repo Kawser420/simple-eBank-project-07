@@ -45,13 +45,13 @@ class DashboardManager {
       avatar.alt = this.currentUser.name;
     }
 
-    // Update balance
+    // Update Balance
     this.updateBalanceDisplay();
 
-    // Load recent transactions
+    // Load Recent Transactions
     this.loadRecentTransactions();
 
-    // Update account number
+    // Update Account number
     const accountNumber = document.getElementById("account-number");
     if (accountNumber) {
       accountNumber.textContent = `•••• ${this.currentUser.id.slice(-4)}`;
@@ -81,7 +81,7 @@ class DashboardManager {
       if (recentTransactions.length === 0) {
         container.innerHTML = `
           <div class="text-center py-8">
-            <div class="text-4xl mb-4">📊</div>
+            <div class="text-4xl mb-4"></div>
             <p class="text-gray-500">No transactions yet</p>
             <p class="text-sm text-gray-400">Your transactions will appear here</p>
           </div>
@@ -99,7 +99,7 @@ class DashboardManager {
         tableBody.innerHTML = `
           <tr>
             <td colspan="4" class="text-center py-8">
-              <div class="text-4xl mb-4">📊</div>
+              <div class="text-4xl mb-4">update</div>
               <p class="text-gray-500">No transactions yet</p>
             </td>
           </tr>
@@ -117,19 +117,19 @@ class DashboardManager {
       deposit: {
         color: "text-success",
         bgColor: "bg-success",
-        icon: "⬇️",
+        icon: "in",
         prefix: "+",
       },
       withdrawal: {
         color: "text-error",
         bgColor: "bg-error",
-        icon: "⬆️",
+        icon: "out",
         prefix: "-",
       },
       transfer: {
         color: "text-info",
         bgColor: "bg-info",
-        icon: "🔄",
+        icon: "tf",
         prefix: "-",
       },
     };
@@ -306,7 +306,6 @@ class DashboardManager {
     submitBtn.disabled = true;
 
     try {
-      // Simulate processing
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Update balance
@@ -527,7 +526,7 @@ class DashboardManager {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
 
-      // Close modal if from modal
+      // Close modal
       if (source === "modal") {
         const modal = document.getElementById("transfer-modal");
         if (modal) {
@@ -780,3 +779,6 @@ class DashboardManager {
 document.addEventListener("DOMContentLoaded", () => {
   new DashboardManager();
 });
+
+// dashboard js end
+// ----------------------------->>>

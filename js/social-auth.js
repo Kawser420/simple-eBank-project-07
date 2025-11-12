@@ -4,31 +4,31 @@ class SocialAuthManager {
       google: {
         name: "Google",
         color: "bg-red-500 hover:bg-red-600 border-red-500",
-        icon: "🔍",
+        icon: "g",
         textColor: "text-white",
       },
       facebook: {
         name: "Facebook",
         color: "bg-blue-600 hover:bg-blue-700 border-blue-600",
-        icon: "👤",
+        icon: "f",
         textColor: "text-white",
       },
       github: {
         name: "GitHub",
         color: "bg-gray-800 hover:bg-gray-900 border-gray-800",
-        icon: "💻",
+        icon: "g",
         textColor: "text-white",
       },
-      twitter: {
+      X: {
         name: "Twitter",
         color: "bg-sky-500 hover:bg-sky-600 border-sky-500",
-        icon: "🐦",
+        icon: "x",
         textColor: "text-white",
       },
       linkedin: {
         name: "LinkedIn",
         color: "bg-blue-700 hover:bg-blue-800 border-blue-700",
-        icon: "💼",
+        icon: "l",
         textColor: "text-white",
       },
     };
@@ -199,3 +199,6 @@ class SocialAuthManager {
 document.addEventListener("DOMContentLoaded", () => {
   new SocialAuthManager();
 });
+
+// social auth end
+// --------------------------------------->>>

@@ -51,7 +51,7 @@ class ThemeManager {
       themeName = "business";
     }
 
-    // Add transition class
+    // Add Transition Class
     document.documentElement.classList.add("theme-transition");
 
     setTimeout(() => {
@@ -63,14 +63,14 @@ class ThemeManager {
         themeSelector.value = themeName;
       }
 
-      // Update mobile theme toggle
+      // Mobile Theme Toggle
       const themeToggle = document.getElementById("theme-toggle-mobile");
       if (themeToggle) {
         const isDark = this.isDarkTheme(themeName);
-        themeToggle.innerHTML = isDark ? "☀️" : "🌙";
+        themeToggle.innerHTML = isDark ? "light" : "dark";
       }
 
-      // Remove transition class
+      // Remove Transition Class
       setTimeout(() => {
         document.documentElement.classList.remove("theme-transition");
       }, 300);
@@ -103,7 +103,7 @@ class ThemeManager {
       themeSection.innerHTML = `
         <div class="card bg-base-100 shadow">
           <div class="card-body">
-            <h3 class="card-title">🎨 Theme Customization</h3>
+            <h3 class="card-title">Theme Customization</h3>
             <div class="form-control w-full mt-4">
               <label class="label">
                 <span class="label-text font-semibold">Select Theme</span>
@@ -152,7 +152,7 @@ class ThemeManager {
       themeToggleItem.innerHTML = `
         <a class="flex items-center justify-between" id="theme-toggle-mobile">
           <span>Toggle Theme</span>
-          <span>${this.isDarkTheme() ? "☀️" : "🌙"}</span>
+          <span>${this.isDarkTheme() ? "light" : "dark"}</span>
         </a>
       `;
       mobileMenu.appendChild(themeToggleItem);
@@ -185,7 +185,7 @@ class ThemeManager {
     return theme.charAt(0).toUpperCase() + theme.slice(1);
   }
 
-  // Get current theme
+  // Get Current Theme
   getCurrentTheme() {
     return StorageManager.getItem("bankTheme") || "business";
   }
@@ -207,7 +207,10 @@ class ThemeManager {
   }
 }
 
-// Theme manager
+// Theme Manager
 document.addEventListener("DOMContentLoaded", () => {
   window.themeManager = new ThemeManager();
 });
+
+// Theme code End
+// ------------------------------>
